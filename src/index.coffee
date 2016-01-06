@@ -26,7 +26,7 @@
 
 if process.env.ITERM_SESSION_ID?.includes ':' or process.env.TERM_COLOR is '16m'
 	unless (/\-color/.test process.argv.join '')
-		process.argv.push '--color=16m'
+		process.argv.unshift '--color=16m'
 
 supportsColor = require 'supports-color'
 
@@ -39,6 +39,6 @@ module.exports =
 	images:       process.env.TERM_IMAGES? and supportsColor.level >= 2
 	audio:        process.env.TERM_AUDIO?
 	termcap:
-		basic:    (/^xterm-256/).test process.env.TERM
-		enhanced: (/\+iterm3/).test process.env.TERM
+		basic:    /^xterm-256/.test process.env.TERM
+		enhanced: /\+iterm3/.test process.env.TERM
 	software:     process.env.TERM_PROGRAM || process.env.TERMKIT_HOST_APP || process.env.TERM
