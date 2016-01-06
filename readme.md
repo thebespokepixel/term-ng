@@ -1,4 +1,4 @@
-[project-badge]: http://img.shields.io/badge/status-alpha-red.svg?style=flat
+[project-badge]: http://img.shields.io/badge/status-beta-blue.svg?style=flat
 [build-badge]: http://img.shields.io/travis/MarkGriffiths/term-ng.svg?branch=master&style=flat
 [david-badge]: http://img.shields.io/david/MarkGriffiths/term-ng.svg?style=flat
 [david-dev-badge]: http://img.shields.io/david/dev/MarkGriffiths/term-ng.svg?style=flat
