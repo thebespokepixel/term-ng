@@ -1,14 +1,14 @@
 {
-  "name": "@thebespokepixel/term-ng",
+  "name": "term-ng",
   "version": "0.0.2",
-  "description": "Whitelist for 24bit Colour Terminals",
+  "description": "Terminal feature snooping and whitelisting",
   "main": "index.js",
   "scripts": {
     "test": "gulp test"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MarkGriffiths/term-ng.git"
+    "url": "https://github.com/MarkGriffiths/term-ng.git"
   },
   "keywords": [
     "24bit",
@@ -28,13 +28,8 @@
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-coffee": "^2.3.1",
-    "gulp-esformatter": "^5.0.0",
     "gulp-spawn": "^0.3.0",
-    "gulp-util": "^3.0.7",
-    "xo": "^0.12.1"
-  },
-  "xo": {
-    "semicolon": false
+    "gulp-util": "^3.0.7"
   },
   "dependencies": {
     "deep-assign": "^2.0.0",

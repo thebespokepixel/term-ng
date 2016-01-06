@@ -3,7 +3,7 @@
 /*
  	Term-NG: Next Generation Terminal Feature Exposure/Whitelisting
 
-	Copyright (c) 2015 CryptoComposite
+	Copyright (c) 2016 Mark Griffiths/CryptoComposite
 
 	Permission is hereby granted, free of charge, to any person
 	obtaining a copy of this software and associated documentation
@@ -24,29 +24,28 @@
 	TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 	SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-let ref;
-let supportsColor;
+var ref, supportsColor;
 
-if ((ref = process.env.ITERM_SESSION_ID) !== undefined ? ref.includes(':' || process.env.TERM_COLOR === '16m') : void 0) {
-	if (!(/\-color/.test(process.argv.join('')))) {
-		process.argv.push('--color=16m');
-	}
+if ((ref = process.env.ITERM_SESSION_ID) != null ? ref.includes(':' || process.env.TERM_COLOR === '16m') : void 0) {
+  if (!(/\-color/.test(process.argv.join('')))) {
+    process.argv.push('--color=16m');
+  }
 }
 
 supportsColor = require('supports-color');
 
 module.exports = {
-	color: {
-		basic: supportsColor.hasBasic,
-		level: supportsColor.level,
-		has256: supportsColor.level >= 2,
-		has16m: supportsColor.level >= 3
-	},
-	images: (process.env.TERM_IMAGES !== undefined) && supportsColor.level >= 2,
-	audio: process.env.TERM_AUDIO !== undefined,
-	termcap: {
-		basic: /^xterm-256/.test(process.env.TERM),
-		enhanced: /\+iterm3/.test(process.env.TERM)
-	},
-	software: process.env.TERM_PROGRAM || process.env.TERMKIT_HOST_APP || process.env.TERM
+  color: {
+    basic: supportsColor.hasBasic,
+    level: supportsColor.level,
+    has256: supportsColor.level >= 2,
+    has16m: supportsColor.level >= 3
+  },
+  images: (process.env.TERM_IMAGES != null) && supportsColor.level >= 2,
+  audio: process.env.TERM_AUDIO != null,
+  termcap: {
+    basic: /^xterm-256/.test(process.env.TERM),
+    enhanced: /\+iterm3/.test(process.env.TERM)
+  },
+  software: process.env.TERM_PROGRAM || process.env.TERMKIT_HOST_APP || process.env.TERM
 };
