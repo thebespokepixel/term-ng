@@ -1,0 +1,144 @@
+### Base iTerm features: Presentation control characters
+### Commented lines are as in xterm-256color
+
+xterm-256color+iterm|iTerm Special command handling,
+
+### Booleans
+
+	erase_overstrike,
+	xon_xoff,
+	backspaces_with_bs@,
+	G0,
+
+### Numeric:
+
+	columns#132, lines#50, init_tabs#4,
+	max_colors#256, max_pairs#32767,
+
+### Strings:
+
+	orig_pair=\e[39;49m,
+
+	acs_chars=``aabbccddeeffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~,
+
+	enter_bold_mode=\e[1m,
+	rmbold=\e[22m,
+
+	enter_dim_mode=\e[2m,
+
+	enter_blink_mode=\e[5m,
+	rmblnk=\e[25m,
+
+	enter_reverse_mode=\e[7m,
+	enter_standout_mode=\e[7;2;1m,
+	exit_standout_mode=\e[27;22m,
+
+	enter_underline_mode=\e[4m,
+	exit_underline_mode=\e[24m,
+
+	enter_italics_mode=\e[3m,
+	exit_italics_mode=\e[23m,
+
+	enter_secure_mode@,
+
+	enter_alt_charset_mode=\e(0,
+	exit_alt_charset_mode=\e(A,
+
+	enter_xon_mode=^Q,
+	exit_xon_mode=^S,
+
+	enter_am_mode=\e[?7h,
+	exit_am_mode=\e[?7l,
+
+	enter_ca_mode=\e[?1049h,
+	exit_ca_mode=\e[?1049l,
+
+	enter_insert_mode=\e[4h,
+	exit_insert_mode=\e[4l,
+
+	set_attributes=
+		%?%p9
+			%t\e(0%e\e(B
+		%;\e[0
+		%?%p1
+			%t;7;2;1
+		%;
+		%?%p2
+			%t;4
+		%;
+		%?%p3
+			%t;7
+		%;
+		%?%p4
+			%t;5
+		%;
+		%?%p5
+			%t;2
+		%;
+		%?%p6
+			%t;1
+		%;m,
+
+
+	exit_attribute_mode=\e(B\e[m,
+
+	Cr=\e]21;bbbbbb\007,
+	Cs=\e]21;%p1%s\007,
+	E3=\e[3J,
+	Ms=\e]52;%p1%s;%p2%s\007,
+	Se=\e[3 q,
+	Ss=\e[%p1%d q,
+
+	bell=^G,
+	carriage_return=^M,
+	newline=\eE,
+
+	cursor_up=\e[A,
+	cursor_down=^J,
+	cursor_right=\e[C,
+	cursor_left=^H,
+
+	scroll_forward=\eD,
+	scroll_reverse=\eM,
+	change_scroll_region=\e[%i%p1%d;%p2%dr,
+	set_tb_margin=\e[%i%p1%d;%p2%dr,
+	set_lr_margin=\e[?69h\e[%i%p1%d;%p2%ds,
+	clear_margins=\e[?69l,
+	set_window=\e[?69h\e[%i%p1%d;%p2%dr\e[%p3%d;%p4%ds,
+
+	save_cursor=\e7,
+	restore_cursor=\e8,
+
+	cursor_home=\e[H,
+	cursor_invisible=\e[?25l,
+	cursor_visible=\e[2 q\e[?25h,
+	cursor_normal=\e[3 q\e[?25h,
+
+	meta_on@,
+	meta_off@,
+
+	kvp=\e]1337;%p1%s=%p2%s^G,
+	app=\e]133;%p1%s^G,
+	file=\e]1337;File=%p1%s:,
+	eof=^G,
+
+	memory_lock@,
+	memory_unlock@,
+
+#	Import everything else from
+	use=xterm-256color,
+
+### iTerm 24bit RGB extensions ###
+iterm3-24bit|iTerm3: 24 bit RGB additions,
+	setf=\e[38:2:%p1%{16711680}%&%{65536}%/%d:%p1%{65280}%&%{256}%/%d:%p1%{255}%&%dm,
+	setb=\e[48:2:%p1%{16711680}%&%{65536}%/%d:%p1%{65280}%&%{256}%/%d:%p1%{255}%&%dm,
+	trucolor,
+	truecolor,
+
+### iTerm Images ###
+iterm3-img|iTerm3: Image additions,
+	images,
+
+### iTerm 24bit and images ###
+xterm-256color+iterm3|iTerm3: iTerm + 24bit RGB color + image additions,
+	use=iterm3-24bit, use=iterm3-img, use=xterm-256color+iterm,
