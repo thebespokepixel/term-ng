@@ -10,7 +10,7 @@
 [npm]: https://www.npmjs.com/package/term-ng
 
 # term-ng  
-A augmented drop-in console replacement that supports logging levels. 
+Enables enhanced node.js/fish-shell/XTerm/iTerm3 feature integration.
 
 ![Project status][project-badge]
 [![Build Status][build-badge]][travis]
@@ -18,9 +18,27 @@ A augmented drop-in console replacement that supports logging levels.
 [![devDependency Status][david-dev-badge]][david-dev]
 [![npm Status][npm-badge]][npm]
 
-Provides enhanced node.js/fish-shell/iTerm3 integration and user experience.
+-	Senses 24bit colour (truecolor) when `$TERM_COLOR=16m` environment variable is set.
+-	Adds `--color=16m` to front of process.argv before wrapping the `supports-color`.
+-	Indicate enhanced media support by setting:
+	+	`$TERM_IMAGES=enabled` : Allow rendering of inline images using OSC sequences.
+	+	`$TERM_AUDIO=enabled` : Allow enhanced audio.
+-	Sense $TERM suffixes to indicate enhanced termcap capabilities.
 
-- Senses enabled 24bit colour (truecolor).
-- Adds support for inline images and audio via enhanced termcap info.
-- Wraps 'supports-color' to enable --color=16m when appropriate.
-- Very basic at the moment.
+In some of my 'private' admin/control systems I use a customised terminfo database that wraps some fo the (very useful) enhanced OSC abilities of more recent iTerm builds into new commands available via `tput` (which I further wrap in fish functions).
+
+The `terminfo` directory above contains `iTerm.ti`. Using `/usr/bin/tic` and ncurses' terminfo database (available from [invisible-island.net](http://invisible-island.net/ncurses/ncurses.html#downloads)), I build a new terminal type `xterm-256color+iterm3`, and change the Terminal type preference in iTerm to the same, setting the $TERM environment variable.
+
+The new terminfo entries are built thusly...
+
+```sh
+cd term-ng/terminfo
+curl http://invisible-island.net/datafiles/current/terminfo.src.gz
+gunzip terminfo.src.gz
+tic -xrs -e xterm-256color terminfo.src
+tic -xsv3 iTerm.ti
+```
+
+This create a new, updated xterm-256color and then extends it for iTerm. this is non-destructive as it creates new entries at ` ~/.terminfo/`. Simply delete this directory to return the terminfo databases back to the original OS provided state.
+
+A word of caution... while this has worked very well for me, I have found that some things complain about an unrecognized term type - Homebrew is notable here. A simple workaround is to have a standard `xterm-256color` profile defined to use when brewing.
