@@ -17,6 +17,4 @@ gulp.task 'test', (cb) ->
 	cb('Test failed!') unless termng.software?
 	gutil.log 'Tests complete.'
 
-gulp.task 'pre-push', [
-	'test'
-]
+gulp.task 'pre-push', []
