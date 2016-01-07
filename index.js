@@ -28,7 +28,7 @@ var ref, supportsColor;
 
 if ((ref = process.env.ITERM_SESSION_ID) != null ? ref.includes(':' || process.env.TERM_COLOR === '16m') : void 0) {
   if (!(/\-color/.test(process.argv.join('')))) {
-    process.argv.unshift('--color=16m');
+    process.argv.splice(3, 0, '--color=16m');
   }
 }
 
@@ -43,6 +43,10 @@ module.exports = {
   },
   images: (process.env.TERM_IMAGES != null) && supportsColor.level >= 2,
   audio: process.env.TERM_AUDIO != null,
+  font: {
+    basic: process.env.TERM_FONT != null,
+    enhanced: process.env.TERM_FONT === 'full'
+  },
   termcap: {
     basic: /^xterm-256/.test(process.env.TERM),
     enhanced: /\+iterm3/.test(process.env.TERM)

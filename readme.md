@@ -19,13 +19,25 @@ Enables enhanced node.js/fish-shell/XTerm/iTerm3 feature integration.
 [![npm Status][npm-badge]][npm]
 
 -	Senses 24bit colour (truecolor) when `$TERM_COLOR=16m` environment variable is set.
--	Adds `--color=16m` to front of process.argv before wrapping the `supports-color`.
+-	Adds `--color=16m` to front of process.argv before wrapping the `supports-color` module.
 -	Indicate enhanced media support by setting:
 	+	`$TERM_IMAGES=enabled` : Allow rendering of inline images using OSC sequences.
 	+	`$TERM_AUDIO=enabled` : Allow enhanced audio.
+-	Indicate that you use a font that has box drawing or full extended characters.
+	+	`$TERM_FONT=box` : Terminal font has UTF8 box drawing characters.
+	+	`$TERM_FONT=full` : Terminal font has full UTF8 extras (such as Menlo, DejaVu Mono).
 -	Sense $TERM suffixes to indicate enhanced termcap capabilities.
 
-In some of my 'private' admin/control systems I use a customised terminfo database that wraps some fo the (very useful) enhanced OSC abilities of more recent iTerm builds into new commands available via `tput` (which I further wrap in fish functions).
+In fish, it's a simple as defining a universal, exported variable.
+
+```sh
+	set -Ux TERM_IMAGES enabled
+	set -Ux TERM_FONT full
+```
+
+In bash an `export TERM_IMAGES=enabled` in `~/.bashrc` will do the trick. I don't use tcsh or zsh anymore so can't remember exactly which files are used when those shells are invoked interactively. Fish is almost always invoked interactively - which is kind of the point of fish, it being the 'Freindly INTERACTIVE Shell' after all! Write scripts for portablility (sh/bash/perl even node) then write fish functions to interact with those scripts from the keyboard... but I digress.
+
+In some of my 'private' admin/control systems, I use a customised terminfo database that wraps some of the (very useful) enhanced OSC abilities of more recent iTerm builds into new commands available via `tput` (which I further wrap in fish functions).
 
 The `terminfo` directory above contains `iTerm.ti`. Using `/usr/bin/tic` and ncurses' terminfo database (available from [invisible-island.net](http://invisible-island.net/ncurses/ncurses.html#downloads)), I build a new terminal type `xterm-256color+iterm3`, and change the Terminal type preference in iTerm to the same, setting the $TERM environment variable.
 
