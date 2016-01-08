@@ -30,7 +30,7 @@ gulp.task 'post-checkout', (cb) ->
 		(err_, stdout_) ->
 			unless err_
 				if version = semverRegex().exec(stdout_)?[0]
-					unless version is "v#{pkg.version}"
+					unless version is pkg.version
 						gutil.log "Setting package to #{version}"
 						exec "npm version #{version}", (err, stdout, stderr) ->
 							unless err
