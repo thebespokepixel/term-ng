@@ -34,7 +34,9 @@ gulp.task 'post-checkout', (cb) ->
 						gutil.log "Setting package to #{version}"
 						exec "npm version #{version}", (err, stdout, stderr) ->
 							unless err
-								gutil.log "#{stdout} (#{stderr})"
+								gulp.src './package.json'
+								  .pipe do git.add
+								  .pipe git.commit "Setting version to #{version}"
 								do cb
 							else
 								cb err
