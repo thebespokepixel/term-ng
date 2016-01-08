@@ -51,5 +51,5 @@ module.exports = {
     basic: /^xterm-256/.test(process.env.TERM),
     enhanced: /\+iterm3/.test(process.env.TERM)
   },
-  software: process.env.TERM_PROGRAM || process.env.TERMKIT_HOST_APP || process.env.TERM
+  software: process.env.TERM_PROGRAM || process.env.TERMKIT_HOST_APP || process.env.TERM || process.env.GULP
 };
