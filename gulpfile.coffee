@@ -24,8 +24,6 @@ gulp.task 'test', ['compile'], (cb) ->
 	gutil.log 'Tests complete.'
 	do cb
 
-
-
 gulp.task 'post-checkout', (cb) ->
 	git.status
 		args : '--porcelain --branch',
