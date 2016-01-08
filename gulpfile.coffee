@@ -1,15 +1,11 @@
 gulp = require 'gulp'
 gutil = require 'gulp-util'
+git = require 'gulp-git'
 coffee = require 'gulp-coffee'
 util = require 'util'
 pkg = require './package.json'
+semverRegex = require 'semver-regex'
 exec = require('child_process').exec
-
-gulp.task 'task', (cb) ->
-	exec 'ping -c 5 localhost', (err, stdout, stderr) ->
-		console.log stdout
-		console.log stderr
-		cb err
 
 gulp.task 'compile', (cb) ->
 	gulp.src './src/*.coffee'
@@ -23,16 +19,31 @@ gulp.task 'compile', (cb) ->
 gulp.task 'test', ['compile'], (cb) ->
 	process.env.GULP = pkg.name
 	termng = require './index'
-	gutil.log "Running tests… #{util.inspect termng, {depth: 2}}"
+	gutil.log "Running tests… #{termng.software}"
 	cb 'Test failed!' unless termng.software?
 	gutil.log 'Tests complete.'
 	do cb
 
-# gulp.task 'shipit', ->
 
+
+gulp.task 'post-checkout', (cb) ->
+	git.status
+		args : '--porcelain --branch',
+		(err_, stdout_) ->
+			unless err_
+				if version = semverRegex().exec(stdout_)[0]
+					unless version is "v#{pkg.version}"
+						gutil.log "Setting package to #{version}"
+						exec "npm version #{version}", (err, stdout, stderr) ->
+							unless err
+								gutil.log "#{stdout} (#{stderr})"
+								do cb
+							else
+								cb err
+					else
+						gutil.log "Package version already set"
+						do cb
+			else
+				cb err_
 
 gulp.task 'default', ['compile']
-
-gulp.task 'pre-push', ['test']
-
-gulp.task 'pre-commit', ['test']
