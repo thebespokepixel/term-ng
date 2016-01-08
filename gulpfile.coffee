@@ -1,9 +1,15 @@
 gulp = require 'gulp'
 gutil = require 'gulp-util'
 coffee = require 'gulp-coffee'
-spawn = require 'gulp-spawn'
 util = require 'util'
 pkg = require './package.json'
+exec = require('child_process').exec
+
+gulp.task 'task', (cb) ->
+	exec 'ping -c 5 localhost', (err, stdout, stderr) ->
+		console.log stdout
+		console.log stderr
+		cb err
 
 gulp.task 'compile', (cb) ->
 	gulp.src './src/*.coffee'
@@ -21,6 +27,9 @@ gulp.task 'test', ['compile'], (cb) ->
 	cb 'Test failed!' unless termng.software?
 	gutil.log 'Tests complete.'
 	do cb
+
+# gulp.task 'shipit', ->
+
 
 gulp.task 'default', ['compile']
 
