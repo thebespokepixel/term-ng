@@ -2,11 +2,4 @@ language: node_js
 node_js:
 - '4.2'
 - stable
-deploy:
-  provider: npm
-  email: mark@thebespokepixel.com
-  api_key:
-    secure: HztA4h2wlgOOhsk9LbDr8pHXT2q3iP7ztcoBhH+azU2V+ni0jQunjmxvo/br6EWbDqRpkYnPCk/CinXEI8V2KJ8RxmXWhDtEZ/0lXbQtHKyCCB9on98k2mytrB4fN2FF3r2StqPbTZMlX2WyoTlER6aFpnKcqm+sgEpYqJ4nzHNusYUOTCA9yXS3ESlq55WMjjc5OV4FSticjlQRx6kLwvdWZ94LX4HyMybYcI3zu7VQ7qh6atQcmuZWjfXTGjFpf2ip33TKFPLodxTCPG66jx2wuVpXxTEsou6vYFK2XVdTSX0K1tEZVg1Z2jnbJsa/JmTzb5saotuMdRKEMGe71z/QcaJ/I/HglQkjGI106SWztpGzoxtKFjD9PN39g9bs/KBqpWyrWuh908yrNkEKDXWlVgbsqYQ3q7qPTGTXA+2s+xPoVCElKXg+kNwy7nff6f71JNoGJB8CtYq0lUdgcGWECIf6dZ6tHU4J3b8td4PQ+AjjLYW9AjHk4e+R/5av/yupaILAWfIB9ChLPyFNAJnUlo1n8YFd30Enib0c46xQb3hoyWngJxhOLsiUINuVW/WKiv0W9k6OaDnn6984q4cnyGFzbBmp3AXaeAGgJM3bRqfolhKktN3RhDgcsSNuQgIUAW18SkfFCfjdLSrO8salXyFJ2VJtHAOZFSuJBc4=
-  on:
-    tags: true
-    repo: MarkGriffiths/term-ng
+before_install: npm i -g npm@latest

@@ -24,7 +24,13 @@ gulp.task 'test', ['compile'], (cb) ->
 	gutil.log 'Tests complete.'
 	do cb
 
-gulp.task 'post-checkout', (cb) ->
+gulp.task 'commitAll', (cb) ->
+	gulp.src './*'
+		.pipe do git.add
+		.pipe git.commit "Setting version to #{version}"
+	do cb
+
+gulp.task 'shipit', (cb) ->
 	git.status
 		args : '--porcelain --branch',
 		(err_, stdout_) ->
@@ -32,17 +38,20 @@ gulp.task 'post-checkout', (cb) ->
 				if version = semverRegex().exec(stdout_)?[0]
 					unless version is pkg.version
 						gutil.log "Setting package to #{version}"
-						exec "npm version #{version}", (err, stdout, stderr) ->
-							unless err
-								gulp.src './package.json'
-								  .pipe do git.add
-								  .pipe git.commit "Setting version to #{version}"
-								do cb
-							else
-								cb err
+						# exec "npm version #{version}", (err, stdout, stderr) ->
+						# 	unless err
+						# 		exec "irish-pub", (err, stdout, stderr) ->
+						# 			unless err
+						# 				gutil.log stdout
+						# 			else
+						# 				cb err
+							# else
+							# 	cb err
 					else
 						gutil.log "Package version already set"
 						do cb
+				else
+					gutil.log "Not on a release branch."
 			else
 				cb err_
 
