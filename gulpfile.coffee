@@ -31,7 +31,7 @@ gulp.task 'post-checkout', (cb) ->
 		args : '--porcelain --branch',
 		(err_, stdout_) ->
 			unless err_
-				if version = semverRegex().exec(stdout_)[0]
+				if version = semverRegex().exec(stdout_)?[0]
 					unless version is "v#{pkg.version}"
 						gutil.log "Setting package to #{version}"
 						exec "npm version #{version}", (err, stdout, stderr) ->
