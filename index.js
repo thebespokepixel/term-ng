@@ -28,7 +28,7 @@ var ref, supportsColor;
 
 if ((ref = process.env.ITERM_SESSION_ID) != null ? ref.includes(':' || process.env.TERM_COLOR === '16m') : void 0) {
   if (!(/\-color/.test(process.argv.join('')))) {
-    process.argv.splice(3, 0, '--color=16m');
+    process.argv.splice(2, 0, '--color=16m');
   }
 }
 

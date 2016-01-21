@@ -4,7 +4,8 @@
   "description": "Terminal/$TERM feature snooping and whitelisting",
   "main": "index.js",
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp test",
+    "colors": "scripts/colortest.pl"
   },
   "repository": {
     "type": "git",

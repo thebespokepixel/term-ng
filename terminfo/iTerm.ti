@@ -22,15 +22,14 @@ xterm-256color+iterm|iTerm Special command handling,
 	acs_chars=``aabbccddeeffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~,
 
 	enter_bold_mode=\e[1m,
-	rmbold=\e[22m,
 
 	enter_dim_mode=\e[2m,
 
 	enter_blink_mode=\e[5m,
-	rmblnk=\e[25m,
 
 	enter_reverse_mode=\e[7m,
-	enter_standout_mode=\e[7;2;1m,
+
+	enter_standout_mode=\e[7;1m,
 	exit_standout_mode=\e[27;22m,
 
 	enter_underline_mode=\e[4m,
@@ -61,7 +60,7 @@ xterm-256color+iterm|iTerm Special command handling,
 			%t\e(0%e\e(B
 		%;\e[0
 		%?%p1
-			%t;7;2;1
+			%t;7;1
 		%;
 		%?%p2
 			%t;4
@@ -79,11 +78,10 @@ xterm-256color+iterm|iTerm Special command handling,
 			%t;1
 		%;m,
 
+	exit_attribute_mode=\e[m,
 
-	exit_attribute_mode=\e(B\e[m,
-
-	Cr=\e]21;bbbbbb\007,
-	Cs=\e]21;%p1%s\007,
+	Cr=\e]PlCCCCCC\007,
+	Cs=\e]Pl%p1%s\007,
 	E3=\e[3J,
 	Ms=\e]52;%p1%s;%p2%s\007,
 	Se=\e[3 q,

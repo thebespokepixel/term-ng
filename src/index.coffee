@@ -26,7 +26,7 @@
 
 if process.env.ITERM_SESSION_ID?.includes ':' or process.env.TERM_COLOR is '16m'
 	unless (/\-color/.test process.argv.join '')
-		process.argv.splice 3, 0, '--color=16m'
+		process.argv.splice 2, 0, '--color=16m'
 
 supportsColor = require 'supports-color'
 
