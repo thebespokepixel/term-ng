@@ -1,14 +1,3 @@
-[project-badge]: http://img.shields.io/badge/status-beta-blue.svg?style=flat
-[build-badge]: http://img.shields.io/travis/MarkGriffiths/term-ng.svg?branch=master&style=flat
-[david-badge]: http://img.shields.io/david/MarkGriffiths/term-ng.svg?style=flat
-[david-dev-badge]: http://img.shields.io/david/dev/MarkGriffiths/term-ng.svg?style=flat
-[npm-badge]: https://img.shields.io/npm/v/term-ng.svg?style=flat
-
-[travis]: https://travis-ci.org/MarkGriffiths/term-ng
-[david]: https://david-dm.org/MarkGriffiths/term-ng
-[david-dev]: https://david-dm.org/MarkGriffiths/term-ng#info=devDependencies
-[npm]: https://www.npmjs.com/package/term-ng
-
 # term-ng  
 Enables enhanced node.js/fish-shell/XTerm/iTerm3 feature integration.
 
@@ -54,3 +43,21 @@ tic -xsv3 iTerm.ti
 This create a new, updated xterm-256color and then extends it for iTerm. this is non-destructive as it creates new entries at ` ~/.terminfo/`. Simply delete this directory to return the terminfo databases back to the original OS provided state.
 
 A word of caution... while this has worked very well for me, I have found that some things complain about an unrecognized term type - Homebrew is notable here. A simple workaround is to have a standard `xterm-256color` profile defined to use when brewing.
+
+### Terminal Color Test
+
+From inside the package directory, running `npm run-script colors` will generate a preview of the entire color gamut your terminal is capable of. Output of a recent iTerm beta shown below:
+
+![Color preview][colors]
+
+[project-badge]: http://img.shields.io/badge/status-beta-blue.svg?style=flat
+[build-badge]: http://img.shields.io/travis/MarkGriffiths/term-ng.svg?branch=master&style=flat
+[david-badge]: http://img.shields.io/david/MarkGriffiths/term-ng.svg?style=flat
+[david-dev-badge]: http://img.shields.io/david/dev/MarkGriffiths/term-ng.svg?style=flat
+[npm-badge]: https://img.shields.io/npm/v/term-ng.svg?style=flat
+[colors]: http://markgriffiths.github.io/projects/term-ng/colors.png
+
+[travis]: https://travis-ci.org/MarkGriffiths/term-ng
+[david]: https://david-dm.org/MarkGriffiths/term-ng
+[david-dev]: https://david-dm.org/MarkGriffiths/term-ng#info=devDependencies
+[npm]: https://www.npmjs.com/package/term-ng

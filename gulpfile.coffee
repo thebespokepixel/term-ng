@@ -1,58 +1,26 @@
+###
+Client Gulp File
+###
+
 gulp = require 'gulp'
-gutil = require 'gulp-util'
-git = require 'gulp-git'
-coffee = require 'gulp-coffee'
-util = require 'util'
-pkg = require './package.json'
-semverRegex = require 'semver-regex'
-exec = require('child_process').exec
+cordial = require '@thebespokepixel/cordial'
 
-gulp.task 'compile', (cb) ->
-	gulp.src './src/*.coffee'
-		.pipe coffee
-			bare: true
-		.on 'error', (err) ->
-			cb err
-		.pipe gulp.dest './'
-	do cb
+gulp.task 'bump', cordial.version.build.inc
+gulp.task 'resetBuild', cordial.version.build.reset
 
-gulp.task 'test', ['compile'], (cb) ->
-	process.env.GULP = pkg.name
-	termng = require './index'
-	gutil.log "Running tests… #{termng.software}"
-	cb 'Test failed!' unless termng.software?
-	gutil.log 'Tests complete.'
-	do cb
+gulp.task 'compile', ['bump'], cordial.coffee.compile './src/**/*.coffee', './'
 
-gulp.task 'commitAll', (cb) ->
-	gulp.src './*'
-		.pipe do git.add
-		.pipe git.commit "Setting version to #{version}"
-	do cb
+gulp.task 'test', cordial.tests.shortCircuit
 
-gulp.task 'shipit', (cb) ->
-	git.status
-		args : '--porcelain --branch',
-		(err_, stdout_) ->
-			unless err_
-				if version = semverRegex().exec(stdout_)?[0]
-					unless version is pkg.version
-						gutil.log "Setting package to #{version}"
-						# exec "npm version #{version}", (err, stdout, stderr) ->
-						# 	unless err
-						# 		exec "irish-pub", (err, stdout, stderr) ->
-						# 			unless err
-						# 				gutil.log stdout
-						# 			else
-						# 				cb err
-							# else
-							# 	cb err
-					else
-						gutil.log "Package version already set"
-						do cb
-				else
-					gutil.log "Not on a release branch."
-			else
-				cb err_
+gulp.task 'commit', cordial.git.commitAll
+gulp.task 'push', cordial.git.pushAll 'origin'
+gulp.task 'backup', ['push'], cordial.git.pushAll 'backup'
+
+gulp.task 'publish', ['test'], cordial.npm.publish
+
+gulp.task 'post-flow-release-start', ['resetBuild'], cordial.flow.release.start
+gulp.task 'post-flow-release-finish', ['publish', 'push']
+gulp.task 'filter-flow-release-start-version', ['test'], cordial.flow.release.versionFilter
+gulp.task 'filter-flow-release-finish-tag-message', cordial.flow.release.tagFilter
 
 gulp.task 'default', ['compile']
