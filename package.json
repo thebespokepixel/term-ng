@@ -1,6 +1,6 @@
 {
   "name": "term-ng",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Terminal/$TERM feature snooping and whitelisting",
   "main": "index.js",
   "scripts": {
@@ -33,5 +33,5 @@
     "deep-assign": "^2.0.0",
     "supports-color": "^3.1.2"
   },
-  "build_number": 1
+  "build_number": 0
 }
