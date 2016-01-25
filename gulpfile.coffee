@@ -10,7 +10,7 @@ gulp.task 'resetBuild', cordial.version.build.reset
 
 gulp.task 'compile', ['bump'], cordial.coffee.compile './src/**/*.coffee', './'
 
-gulp.task 'test', cordial.tests.shortCircuit
+gulp.task 'test', cordial.test.shortCircuit
 
 gulp.task 'commit', cordial.git.commitAll
 gulp.task 'push', cordial.git.pushAll 'origin'
