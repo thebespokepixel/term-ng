@@ -1,6 +1,6 @@
 {
   "name": "term-ng",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "Terminal/$TERM feature snooping and whitelisting",
   "main": "index.js",
   "scripts": {
@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/MarkGriffiths/term-ng#readme",
   "devDependencies": {
-    "@thebespokepixel/cordial": "^0.2.12"
+    "@thebespokepixel/cordial": "^0.3.0"
   },
   "dependencies": {
     "deep-assign": "^2.0.0",
