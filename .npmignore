@@ -6,4 +6,5 @@ terminfo/*
 .editorconfig
 .travis.yml
 gulpfile.coffee
+gulpfile.updated.coffee
 *.map

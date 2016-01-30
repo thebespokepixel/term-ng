@@ -1,7 +1,7 @@
 # term-ng  
-Enables enhanced node.js/fish-shell/XTerm/iTerm3 feature integration.
-
-![Project status][project-badge]
+>Enables enhanced node.js/fish-shell/XTerm/iTerm3 feature integration.
+>
+>![Project status][project-badge]
 [![Build Status][build-badge]][travis]
 [![Dependency Status][david-badge]][david]
 [![devDependency Status][david-dev-badge]][david-dev]

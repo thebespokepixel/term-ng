@@ -1,6 +1,6 @@
 {
   "name": "term-ng",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Terminal/$TERM feature snooping and whitelisting",
   "main": "index.js",
   "scripts": {
@@ -11,6 +11,9 @@
     "type": "git",
     "url": "https://github.com/MarkGriffiths/term-ng.git"
   },
+  "engines": {
+    "node": ">= 4.2 <6.0"
+  },
   "keywords": [
     "24bit",
     "color",
@@ -18,7 +21,10 @@
     "truecolor",
     "trucolor",
     "sgr",
-    "cli"
+    "cli",
+    "tty",
+    "iterm",
+    "xterm"
   ],
   "author": "Mark Griffiths <mark@thebespokepixel.com> (http://thebespokepixel.com/)",
   "license": "MIT",
@@ -27,7 +33,7 @@
   },
   "homepage": "https://github.com/MarkGriffiths/term-ng#readme",
   "devDependencies": {
-    "@thebespokepixel/cordial": "^0.3.0"
+    "@thebespokepixel/cordial": "^0.4.2"
   },
   "dependencies": {
     "deep-assign": "^2.0.0",
