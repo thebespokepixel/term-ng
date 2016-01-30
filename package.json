@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/MarkGriffiths/term-ng#readme",
   "devDependencies": {
-    "@thebespokepixel/cordial": "^0.4.1"
+    "@thebespokepixel/cordial": "^0.4.2"
   },
   "dependencies": {
     "deep-assign": "^2.0.0",
