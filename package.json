@@ -4,7 +4,7 @@
   "description": "Terminal/$TERM feature snooping and whitelisting",
   "main": "index.js",
   "scripts": {
-    "test": "gulp test",
+    "test": "xo",
     "colors": "scripts/colortest.pl"
   },
   "repository": {
@@ -33,11 +33,32 @@
   },
   "homepage": "https://github.com/MarkGriffiths/term-ng#readme",
   "devDependencies": {
-    "@thebespokepixel/cordial": "^0.4.2"
+    "@thebespokepixel/cordial": "*",
+    "xo": "^0.12.1"
   },
   "dependencies": {
     "deep-assign": "^2.0.0",
     "supports-color": "^3.1.2"
   },
-  "build_number": 0
+  "build_number": 3,
+  "xo": {
+    "semicolon": false,
+    "esnext": true,
+    "rules": {
+      "prefer-const": 1,
+      "no-var": 0,
+      "key-spacing": [
+        0, {
+          "beforeColon": false,
+          "afterColon": false
+        }
+      ],
+      "new-cap": [
+        2, {
+          "newIsCap": false,
+          "capIsNew": true
+        }
+      ]
+    }
+  }
 }

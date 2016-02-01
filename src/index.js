@@ -24,32 +24,24 @@
 	SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-var _supportsColor = require('supports-color')
-
-var _supportsColor2 = _interopRequireDefault(_supportsColor)
-
-function _interopRequireDefault(obj) {
-	return obj && obj.__esModule ? obj : {
-		default: obj
-	}
-}
-
-if (process.env.ITERM_SESSION_ID && process.env.ITERM_SESSION_ID.includes(':') || process.env.TERM_COLOR && process.env.TERM_COLOR.includes('16m')) {
-	if (!/\-color/.test(process.argv.join(''))) {
+if ((process.env.ITERM_SESSION_ID && process.env.ITERM_SESSION_ID.includes(':')) || (process.env.TERM_COLOR && process.env.TERM_COLOR.includes('16m'))) {
+	if (!(/\-color/.test(process.argv.join('')))) {
 		process.argv.splice(2, 0, '--color=16m')
 	}
 }
 
+import supportsColor from 'supports-color'
+
 module.exports = {
 	color: {
-		basic:  _supportsColor2.default.hasBasic,
-		level:  _supportsColor2.default.level,
-		has256: _supportsColor2.default.level >= 2,
-		has16m: _supportsColor2.default.level >= 3
+		basic:  supportsColor.hasBasic,
+		level:  supportsColor.level,
+		has256: supportsColor.level >= 2,
+		has16m: supportsColor.level >= 3
 	},
-	images: process.env.TERM_IMAGES !== undefined && _supportsColor2.default.level >= 2,
-	audio:  process.env.TERM_AUDIO !== undefined,
-	font:   {
+	images: (process.env.TERM_IMAGES !== undefined) && supportsColor.level >= 2,
+	audio:   process.env.TERM_AUDIO !== undefined,
+	font: {
 		basic:    process.env.TERM_FONT !== undefined,
 		enhanced: process.env.TERM_FONT === 'full'
 	},
@@ -59,4 +51,3 @@ module.exports = {
 	},
 	software: process.env.TERM_PROGRAM || process.env.TERMKIT_HOST_APP || process.env.TERM || process.env.GULP
 }
-
