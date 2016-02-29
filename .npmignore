@@ -5,6 +5,5 @@ terminfo/*
 *.sublime*
 .editorconfig
 .travis.yml
-gulpfile.coffee
-gulpfile.updated.coffee
+gulpfile.*
 *.map
