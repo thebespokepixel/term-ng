@@ -2,12 +2,12 @@
 >Enables enhanced node.js/fish-shell/XTerm/iTerm3 feature integration.
 >
 >![Project status][project-badge]
+[![npm Status][npm-badge]][npm]
+[![XO code style][xo-badge]][xo]
+[![Chat on Gitter][gitter-badge]][gitter]  
 [![Build Status][build-badge]][travis]
 [![Dependency Status][david-badge]][david]
 [![devDependency Status][david-dev-badge]][david-dev]
-[![npm Status][npm-badge]][npm]
-[![XO code style][xo-badge]][xo]
-[![Chat on Gitter][gitter-badge]][gitter]
 
 -	Senses 24bit colour (truecolor) when `$TERM_COLOR=16m` environment variable is set.
 -	Adds `--color=16m` to front of process.argv before wrapping the `supports-color` module.
