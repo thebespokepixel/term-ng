@@ -2,10 +2,12 @@
 >Enables enhanced node.js/fish-shell/XTerm/iTerm3 feature integration.
 >
 >![Project status][project-badge]
+[![npm Status][npm-badge]][npm]
+[![XO code style][xo-badge]][xo]
+[![Chat on Gitter][gitter-badge]][gitter]  
 [![Build Status][build-badge]][travis]
 [![Dependency Status][david-badge]][david]
 [![devDependency Status][david-dev-badge]][david-dev]
-[![npm Status][npm-badge]][npm]
 
 -	Senses 24bit colour (truecolor) when `$TERM_COLOR=16m` environment variable is set.
 -	Adds `--color=16m` to front of process.argv before wrapping the `supports-color` module.
@@ -50,14 +52,19 @@ From inside the package directory, running `npm run-script colors` will generate
 
 ![Color preview][colors]
 
+[colors]: http://markgriffiths.github.io/projects/term-ng/colors.png
+
 [project-badge]: http://img.shields.io/badge/status-beta-blue.svg?style=flat
 [build-badge]: http://img.shields.io/travis/MarkGriffiths/term-ng.svg?branch=master&style=flat
 [david-badge]: http://img.shields.io/david/MarkGriffiths/term-ng.svg?style=flat
 [david-dev-badge]: http://img.shields.io/david/dev/MarkGriffiths/term-ng.svg?style=flat
 [npm-badge]: https://img.shields.io/npm/v/term-ng.svg?style=flat
-[colors]: http://markgriffiths.github.io/projects/term-ng/colors.png
+[xo-badge]: https://img.shields.io/badge/code_style-XO-5ed9c7.svg
+[gitter-badge]: https://badges.gitter.im/MarkGriffiths/help.svg
 
 [travis]: https://travis-ci.org/MarkGriffiths/term-ng
 [david]: https://david-dm.org/MarkGriffiths/term-ng
 [david-dev]: https://david-dm.org/MarkGriffiths/term-ng#info=devDependencies
 [npm]: https://www.npmjs.com/package/term-ng
+[xo]: https://github.com/sindresorhus/xo
+[gitter]: https://gitter.im/MarkGriffiths/help?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
