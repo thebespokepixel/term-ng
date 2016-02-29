@@ -30,7 +30,7 @@ if ((process.env.ITERM_SESSION_ID && process.env.ITERM_SESSION_ID.includes(':'))
 	}
 }
 
-import supportsColor from 'supports-color'
+const supportsColor = require('supports-color')
 
 module.exports = {
 	color: {

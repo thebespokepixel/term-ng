@@ -23,7 +23,7 @@ indent_size = 2
 # Tabs for indent, spaces for alignment. It's the typeographer in me.
 # Tab width of 3 is my 'Goldilocks' zone of indentation and until I can grep
 # indention spaces explicitly, Tabs it will be. Opinionated? Absolutely!
-[*.{coffee,js,JavaScript,json,c,h,ino,cpp,fish,sh,pl}]
+[*.{coffee,js,JavaScript,json,c,h,ino,cpp,fish,sh,pl,py}]
 indent_style = tab
 indent_size = 3
 
