@@ -34,8 +34,8 @@ const supportsColor = require('supports-color')
 
 module.exports = {
 	color: {
-		basic:  supportsColor !== undefined && supportsColor.hasBasic,
-		level:  supportsColor.level,
+		basic:  supportsColor.hasBasic || false,
+		level:  supportsColor.level || 0,
 		has256: supportsColor.level >= 2,
 		has16m: supportsColor.level >= 3
 	},
