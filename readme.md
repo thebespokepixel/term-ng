@@ -1,4 +1,4 @@
-# term-ng  
+# TermNG (Next Generation)  
 >Enables enhanced node.js/fish-shell/XTerm/iTerm3 feature integration.
 >
 >![Project status][project-badge]
