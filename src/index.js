@@ -46,8 +46,8 @@ module.exports = {
 		enhanced: process.env.TERM_FONT === 'full'
 	},
 	termcap: {
-		basic:    /^xterm-256/.test(process.env.TERM),
-		enhanced: /\+iterm3/.test(process.env.TERM)
+		basic:    process.env.TERM_ENHANCED !== undefined && process.env.TERM_ENHANCED === 'disabled',
+		enhanced: process.env.TERM_ENHANCED === 'enabled'
 	},
 	software: process.env.TERM_PROGRAM || process.env.TERMKIT_HOST_APP || process.env.TERM || process.env.GULP
 }

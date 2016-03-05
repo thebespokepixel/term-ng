@@ -47,7 +47,7 @@ const yargs = require('yargs').strict()
 	.command('has-audio', 'Is audio supported? (set $TERM_AUDIO=enabled)')
 	.command('has-box-font', 'Is audio supported? (set $TERM_FONT=box)')
 	.command('has-full-font', 'Is audio supported? (set $TERM_FONT=full)')
-	.command('is-enhanced', 'Is the current terminal using an enhanced termcap?')
+	.command('is-enhanced', 'Is the current terminal using an enhanced termcap? (set $TERM_ENHANCED=enabled)')
 	.command('user-agent', 'Print the current terminal software')
 	.wrap(renderer.getWidth())
 
