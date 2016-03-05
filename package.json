@@ -1,6 +1,6 @@
 {
   "name": "term-ng",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "description": "Terminal/$TERM feature snooping and whitelisting",
   "main": "index.js",
   "bin": {
@@ -48,7 +48,7 @@
     "update-notifier": "^0.6.1",
     "yargs": "^4.2.0"
   },
-  "build_number": 7,
+  "build_number": 0,
   "xo": {
     "semicolon": false,
     "esnext": true,
@@ -56,13 +56,15 @@
       "prefer-const": 1,
       "no-var": 0,
       "key-spacing": [
-        0, {
+        0,
+        {
           "beforeColon": false,
           "afterColon": false
         }
       ],
       "new-cap": [
-        2, {
+        2,
+        {
           "newIsCap": false,
           "capIsNew": true
         }
