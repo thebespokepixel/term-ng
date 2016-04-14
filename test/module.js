@@ -47,23 +47,3 @@ test(`Module property types`, t => {
 	t.is(typeof termNG.termcap.enhanced, 'boolean', 'termcap.enhanced incorrect type')
 	t.is(typeof termNG.software, 'string', 'software incorrect type')
 })
-
-// module.exports = {
-// 	color: {
-// 		basic: supportsColor.hasBasic,
-// 		level: supportsColor.level,
-// 		has256: supportsColor.level >= 2,
-// 		has16m: supportsColor.level >= 3
-// 	},
-// 	images: process.env.TERM_IMAGES !== undefined && supportsColor.level >= 2,
-// 	audio: process.env.TERM_AUDIO !== undefined,
-// 	font: {
-// 		basic: process.env.TERM_FONT !== undefined,
-// 		enhanced: process.env.TERM_FONT === 'full'
-// 	},
-// 	termcap: {
-// 		basic: /^xterm-256/.test(process.env.TERM),
-// 		enhanced: /\+iterm3/.test(process.env.TERM)
-// 	},
-// 	software: process.env.TERM_PROGRAM || process.env.TERMKIT_HOST_APP || process.env.TERM || process.env.GULP
-// }

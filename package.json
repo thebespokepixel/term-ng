@@ -7,7 +7,7 @@
     "termng": "./bin/termng.js"
   },
   "scripts": {
-    "test": "gulp test --verbose",
+    "test": "xo && ava",
     "colors": "scripts/colortest.pl"
   },
   "repository": {
