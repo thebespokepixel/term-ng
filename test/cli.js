@@ -1,8 +1,8 @@
 'use strict'
 
 import shell from 'shelljs'
-import pkg from '../package.json'
 import test from 'ava'
+import pkg from '../package.json'
 
 test.cb(`Module name/version is '${pkg.name}'.`, t => {
 	shell.exec('/usr/bin/env node ../lib/cli/index.js -vv', {
@@ -63,23 +63,3 @@ test.cb('256 Color: has-16m', t => {
 		t.end()
 	})
 })
-
-// module.exports = {
-// 	color: {
-// 		basic: supportsColor.hasBasic,
-// 		level: supportsColor.level,
-// 		has256: supportsColor.level >= 2,
-// 		has16m: supportsColor.level >= 3
-// 	},
-// 	images: process.env.TERM_IMAGES !== undefined && supportsColor.level >= 2,
-// 	audio: process.env.TERM_AUDIO !== undefined,
-// 	font: {
-// 		basic: process.env.TERM_FONT !== undefined,
-// 		enhanced: process.env.TERM_FONT === 'full'
-// 	},
-// 	termcap: {
-// 		basic: /^xterm-256/.test(process.env.TERM),
-// 		enhanced: /\+iterm3/.test(process.env.TERM)
-// 	},
-// 	software: process.env.TERM_PROGRAM || process.env.TERMKIT_HOST_APP || process.env.TERM || process.env.GULP
-// }
