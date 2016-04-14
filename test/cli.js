@@ -1,8 +1,8 @@
 'use strict'
 
 import shell from 'shelljs'
-import pkg from '../package.json'
 import test from 'ava'
+import pkg from '../package.json'
 
 test.cb(`Module name/version is '${pkg.name}'.`, t => {
 	shell.exec('/usr/bin/env node ../lib/cli/index.js -vv', {

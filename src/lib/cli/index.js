@@ -1,29 +1,13 @@
 #! /usr/bin/env node
 'use strict'
 
-const termNG = require('../../index')
 const clr = require('trucolor').simplePalette()
 const updateNotifier = require('update-notifier')
-const pkg = require('../../package.json')
 
 const renderer = require('truwrap')({
 	right: 0,
 	outStream: process.stderr
 })
-
-const usage = `
-${clr.title}term-ng${clr.title.out} ${clr.dim}v${pkg.version}${clr.dim.out}
-
-Allow user configured enhanced terminal capabilities to be queried.
-
-The command will exit with status 0 if all the provided queries (except user-agent) are true, otherwise exits with status 1.
-
-If user-agent is used, the command will return the string on stdout and exit status 0.
-
-${clr.title}Usage:${clr.title.out}
-${clr.command}termng ${clr.option}[command]`
-
-const epilogue = `${clr.command}© 2016 The Bespoke Pixel. ${clr.grey}Released under the MIT License.${clr.grey.out}`
 
 const yargs = require('yargs').strict()
 	.options({
@@ -52,6 +36,22 @@ const yargs = require('yargs').strict()
 	.wrap(renderer.getWidth())
 
 const argv = yargs.argv
+const termNG = require('../../index')
+const pkg = require('../../package.json')
+
+const usage = `
+${clr.title}term-ng${clr.title.out} ${clr.dim}v${pkg.version}${clr.dim.out}
+
+Allow user configured enhanced terminal capabilities to be queried.
+
+The command will exit with status 0 if all the provided queries (except user-agent) are true, otherwise exits with status 1.
+
+If user-agent is used, the command will return the string on stdout and exit status 0.
+
+${clr.title}Usage:${clr.title.out}
+${clr.command}termng ${clr.option}[command]`
+
+const epilogue = `${clr.command}© 2016 The Bespoke Pixel. ${clr.grey}Released under the MIT License.${clr.grey.out}`
 
 updateNotifier({
 	pkg
