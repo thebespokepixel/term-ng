@@ -1,4 +1,4 @@
-# TermNG (Next Generation)  
+# term-ng  
 >Enables enhanced node.js/fish-shell/XTerm/iTerm3 feature integration.
 >
 >![Project status][project-badge]
@@ -8,6 +8,8 @@
 [![Build Status][build-badge]][travis]
 [![Dependency Status][david-badge]][david]
 [![devDependency Status][david-dev-badge]][david-dev]
+
+## TermNG (Next Generation)
 
 -	Senses 24bit colour (truecolor) when `$TERM_COLOR=16m` environment variable is set.
 -	Adds `--color=16m` to front of process.argv before wrapping the `supports-color` module.
