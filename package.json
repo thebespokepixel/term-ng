@@ -1,6 +1,6 @@
 {
   "name": "term-ng",
-  "version": "0.5.8",
+  "version": "0.5.9",
   "description": "Terminal/$TERM feature snooping and whitelisting",
   "main": "index.js",
   "bin": {
