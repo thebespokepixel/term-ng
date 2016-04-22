@@ -48,7 +48,7 @@
     "update-notifier": "^0.6.1",
     "yargs": "^4.4.0"
   },
-  "build_number": 0,
+  "build_number": 1,
   "xo": {
     "semicolon": false,
     "esnext": true

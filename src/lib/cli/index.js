@@ -37,10 +37,10 @@ const yargs = require('yargs').strict()
 
 const argv = yargs.argv
 const termNG = require('../../index')
-const package_ = require('../../package.json')
+const _package = require('../../package.json')
 
 const usage = `
-${clr.title}term-ng${clr.title.out} ${clr.dim}v${package_.version}${clr.dim.out}
+${clr.title}term-ng${clr.title.out} ${clr.dim}v${_package.version}${clr.dim.out}
 
 Allow user configured enhanced terminal capabilities to be queried.
 
@@ -54,7 +54,7 @@ ${clr.command}termng ${clr.option}[command]`
 const epilogue = `${clr.command}© 2016 The Bespoke Pixel. ${clr.grey}Released under the MIT License.${clr.grey.out}`
 
 updateNotifier({
-	pkg: package_
+	pkg: _package
 }).notify()
 
 if (argv.help) {
@@ -68,7 +68,7 @@ if (argv.help) {
 }
 
 if (argv.version) {
-	process.stdout.write(argv.version > 1 ? `${package_.name} v${package_.version}` : package_.version)
+	process.stdout.write(argv.version > 1 ? `${_package.name} v${_package.version}` : _package.version)
 	process.exit(0)
 }
 

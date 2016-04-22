@@ -28,6 +28,45 @@ In fish, it's a simple as defining a universal, exported variable.
 
 In bash an `export TERM_IMAGES=enabled` in `~/.bashrc` will do the trick. I don't use tcsh or zsh anymore so can't remember exactly which files are used when those shells are invoked interactively. Fish is almost always invoked interactively - which is kind of the point of fish, it being the 'Freindly INTERACTIVE Shell' after all! Write scripts for portablility (sh/bash/perl even node) then write fish functions to interact with those scripts from the keyboard... but I digress.
 
+### Usage
+
+```js
+
+  const termNG = require('term-ng')
+
+  // returns an object:
+  
+  // Color support
+  termNG.color.hasBasic // Boolean - is there basic color support.
+  termNG.color.level    // Integer - 0 = None, 1 = Basic, 2 = 256 colors, 3 = 24 bit color
+  termNG.color.has256   // Boolean - terminal supports 256 colors
+  termNG.color.has16m   // Boolean - terminal supports 16 million (24 bit) color
+
+  // Images support
+  termNG.images // Boolean - Does the terminal support inline images
+                // env TERM_IMAGES=enabled to set 
+
+  // Audio support
+  termNG.audio // Boolean - Should the terminal support audio playback?
+               // env TERM_AUDIO=enabled to set
+  
+  // Font support
+  termNG.font.basic    // Boolean - font has basic box drawing symbols
+  termNG.font.enhanced // Boolean - font has 'full' Unicode character support
+                       // env TERM_FONT=[box|full] to set
+
+  // Termcap support
+  termNG.termcap.basic    // Boolean - using the default termcap
+  termNG.termcap.enhanced // Boolean - using an enhanced/custom termcap
+                          // env TERM_ENHANCED=enabled to override
+
+  // Terminal software
+  termNG.software // String - name of running terminal software, i.e. 'iTerm.app'
+
+```
+
+### Notes on enhancing termcap
+
 In some of my 'private' admin/control systems, I use a customised terminfo database that wraps some of the (very useful) enhanced OSC abilities of more recent iTerm builds into new commands available via `tput` (which I further wrap in fish functions).
 
 The `terminfo` directory above contains `iTerm.ti`. Using `/usr/bin/tic` and ncurses' terminfo database (available from [invisible-island.net](http://invisible-island.net/ncurses/ncurses.html#downloads)), I build a new terminal type `xterm-256color+iterm3`, and change the Terminal type preference in iTerm to the same, setting the $TERM environment variable.
