@@ -93,7 +93,7 @@ From inside the package directory, running `npm run-script colors` will generate
 
 ![Color preview][colors]
 
-[colors]: http://markgriffiths.github.io/projects/term-ng/colors.png
+[colors]: https://raw.githubusercontent.com/MarkGriffiths/term-ng/develop/media/colors.png
 
 [project-badge]: http://img.shields.io/badge/status-beta-blue.svg?style=flat
 [build-badge]: http://img.shields.io/travis/MarkGriffiths/term-ng.svg?branch=master&style=flat
