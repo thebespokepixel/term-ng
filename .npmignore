@@ -1,6 +1,7 @@
 .npmignore
 src
 test
+media
 terminfo
 *.sublime*
 .editorconfig
