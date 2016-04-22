@@ -34,7 +34,7 @@ gulp.task('publish-push', ['publish'], cordial.git.pushAll('origin'))
 gulp.task('publish-backup', ['publish-push'], cordial.git.pushAll('backup'))
 
 // Guppy Hooks
-gulp.task('post-flow-release-start', ['reset'], cordial.flow.release.start)
+gulp.task('post-flow-release-start', ['test', 'reset'], cordial.flow.release.start)
 gulp.task('post-flow-release-finish', ['publish-push'])
 gulp.task('filter-flow-release-start-version', cordial.flow.release.versionFilter)
 gulp.task('filter-flow-release-finish-tag-message', cordial.flow.release.tagFilter)
