@@ -53,9 +53,11 @@ ${clr.command}termng ${clr.option}[command]`
 
 const epilogue = `${clr.command}© 2016 The Bespoke Pixel. ${clr.grey}Released under the MIT License.${clr.grey.out}`
 
-updateNotifier({
-	pkg: _package
-}).notify()
+if (!(process.env.USER === 'root' && process.env.SUDO_USER !== process.env.USER)) {
+	updateNotifier({
+		pkg: _package
+	}).notify()
+}
 
 if (argv.help) {
 	renderer.write(usage)
