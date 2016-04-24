@@ -1,6 +1,6 @@
 {
   "name": "term-ng",
-  "version": "0.6.0",
+  "version": "0.6.2",
   "description": "Terminal/$TERM feature snooping and whitelisting",
   "main": "index.js",
   "bin": {
@@ -48,7 +48,7 @@
     "update-notifier": "^0.6.1",
     "yargs": "^4.4.0"
   },
-  "build_number": 1,
+  "build_number": 0,
   "xo": {
     "semicolon": false,
     "esnext": true

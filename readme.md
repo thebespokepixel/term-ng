@@ -23,7 +23,7 @@
 
 In fish, it's a simple as defining a universal, exported variable.
 
-```sh
+```shell
 	set -Ux TERM_IMAGES enabled
 	set -Ux TERM_FONT full
 ```
@@ -31,6 +31,10 @@ In fish, it's a simple as defining a universal, exported variable.
 In bash an `export TERM_IMAGES=enabled` in `~/.bashrc` will do the trick. I don't use tcsh or zsh anymore so can't remember exactly which files are used when those shells are invoked interactively. Fish is almost always invoked interactively - which is kind of the point of fish, it being the 'Freindly INTERACTIVE Shell' after all! Write scripts for portablility (sh/bash/perl even node) then write fish functions to interact with those scripts from the keyboard... but I digress.
 
 ### Usage
+
+```shell
+  > npm install --save term-ng
+```
 
 ```js
 
@@ -66,6 +70,39 @@ In bash an `export TERM_IMAGES=enabled` in `~/.bashrc` will do the trick. I don'
   termNG.software // String - name of running terminal software, i.e. 'iTerm.app'
 
 ```
+
+### CLI Usage
+
+```shell
+
+  > npm install --global term-ng
+
+  > term-ng --help
+```
+
+```
+  ...
+  Usage:
+  termng [command]
+
+  Commands:
+  has-color      Is basic color supported?
+  has-256        Is 256 color supported?
+  has-16m        Is 24 bit color supported?
+  has-images     Are images supported? (set $TERM_IMAGES=enabled)
+  has-audio      Is audio supported? (set $TERM_AUDIO=enabled)
+  has-box-font   Is audio supported? (set $TERM_FONT=box)
+  has-full-font  Is audio supported? (set $TERM_FONT=full)
+  is-enhanced    Is the current terminal using an enhanced termcap? (set $TERM_ENHANCED=enabled)
+  user-agent     Print the current terminal software
+
+  Options:
+  -h, --help     Display this help.
+  -v, --version  Return the current version on stdout. -vv Return name & version.
+  --color        Force color depth --color=256|16m. Disable with --no-color
+
+```
+
 
 ### Notes on enhancing termcap
 
