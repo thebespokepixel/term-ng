@@ -43,7 +43,7 @@ In bash an `export TERM_IMAGES=enabled` in `~/.bashrc` will do the trick. I don'
   // returns an object:
   
   // Color support
-  termNG.color.hasBasic // Boolean - is there basic color support.
+  termNG.color.basic // Boolean - is there basic color support.
   termNG.color.level    // Integer - 0 = None, 1 = Basic, 2 = 256 colors, 3 = 24 bit color
   termNG.color.has256   // Boolean - terminal supports 256 colors
   termNG.color.has16m   // Boolean - terminal supports 16 million (24 bit) color
