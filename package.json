@@ -42,8 +42,10 @@
   "homepage": "https://github.com/MarkGriffiths/term-ng#readme",
   "devDependencies": {
     "@thebespokepixel/cordial": "*",
-    "semver-regex": "^1.0.0",
-    "shelljs": "^0.7.0"
+    "ava": "^0.15.2",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "shelljs": "^0.7.0",
+    "xo": "^0.16.0"
   },
   "dependencies": {
     "core-js": "*",
@@ -69,6 +71,6 @@
       "test/*.js"
     ]
   },
-  "buildNumber": 41,
+  "buildNumber": 43,
   "jsnext:main": "lib/index-es6.js"
 }
