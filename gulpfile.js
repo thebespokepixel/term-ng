@@ -25,9 +25,7 @@ gulp.task('xo', cordial.test().xo(['src/**/*.es6']))
 gulp.task('test', gulp.parallel('xo', 'ava'))
 
 // Hooks
-gulp.task('start-release', gulp.series('reset'))
-gulp.task('test-release', gulp.series('test'))
-gulp.task('finish-release', gulp.series('push-force'))
+gulp.task('finish-release', gulp.series('push-force', 'push'))
 
 // Default
 gulp.task('default', gulp.series('bump', 'bundle'))
