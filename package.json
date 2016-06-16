@@ -1,11 +1,16 @@
 {
   "name": "term-ng",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "description": "Terminal/$TERM feature snooping and whitelisting",
   "main": "index.js",
   "bin": {
     "termng": "./bin/termng.js"
   },
+  "files": [
+    "index.js",
+    "lib",
+    "bin"
+  ],
   "scripts": {
     "test": "xo && ava",
     "colors": "scripts/colortest.pl"
@@ -15,7 +20,7 @@
     "url": "https://github.com/MarkGriffiths/term-ng.git"
   },
   "engines": {
-    "node": ">= 4.2 <6.0"
+    "node": ">=4.0 <7.0"
   },
   "keywords": [
     "24bit",
@@ -37,20 +42,35 @@
   "homepage": "https://github.com/MarkGriffiths/term-ng#readme",
   "devDependencies": {
     "@thebespokepixel/cordial": "*",
-    "semver-regex": "^1.0.0",
-    "shelljs": "^0.6.0"
+    "ava": "^0.15.2",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "shelljs": "^0.7.0",
+    "xo": "^0.16.0"
   },
   "dependencies": {
+    "core-js": "*",
     "deep-assign": "^2.0.0",
+    "read-pkg-up": "^1.0.1",
     "supports-color": "^3.1.2",
     "trucolor": "*",
     "truwrap": "*",
-    "update-notifier": "^0.6.1",
+    "update-notifier": "^1.0.0",
     "yargs": "^4.4.0"
   },
-  "build_number": 0,
   "xo": {
     "semicolon": false,
-    "esnext": true
-  }
+    "esnext": true,
+    "ignores": [
+      "lib/**/*.js",
+      "bin/*.js"
+    ]
+  },
+  "ava": {
+    "verbose": true,
+    "files": [
+      "test/*.js"
+    ]
+  },
+  "buildNumber": 0,
+  "jsnext:main": "lib/index-es6.js"
 }

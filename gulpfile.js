@@ -4,19 +4,28 @@
  */
 
 const gulp = require('gulp')
-const cordial = require('@thebespokepixel/cordial')
+const cordial = require('@thebespokepixel/cordial')()
 
-// Comtranspilationatting
-gulp.task('babel-format', cordial.format.babel(['src/**/*.js'], './'))
+// transpilation/formatting
+gulp.task('bundle', gulp.parallel(
+	cordial.macro({
+		master: true,
+		source: 'src/index.es6'
+	}).bundle(),
+	cordial.format({
+		source: 'src/lib/cli/index.es6'
+	}).rollup.babel({
+		dest: 'lib/cli/index.js'
+	}))
+)
 
 // Tests
-gulp.task('ava', cordial.test.ava(['test/*.js']))
-gulp.task('xo', cordial.test.xo(['**/*.js', '!{node_modules}/**/*']))
+gulp.task('ava', cordial.test().ava(['test/*.js']))
+gulp.task('xo', cordial.test().xo(['src/**/*.es6']))
 gulp.task('test', gulp.parallel('xo', 'ava'))
 
-// Guppy Hooks
-gulp.task('start-release', gulp.series('reset', 'test'))
-gulp.task('finish-release', gulp.series('backup'))
+// Hooks
+gulp.task('finish-release', gulp.series('push-force', 'push'))
 
 // Default
-gulp.task('default', gulp.series('bump', 'babel-format'))
+gulp.task('default', gulp.series('bump', 'bundle'))

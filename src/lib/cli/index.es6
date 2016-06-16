@@ -1,15 +1,30 @@
-#! /usr/bin/env node
-'use strict'
+/*
+	Term-NG: Next Generation Terminal Feature Exposure/Whitelisting
 
-const clr = require('trucolor').simplePalette()
-const updateNotifier = require('update-notifier')
+	Copyright (c) 2016 Mark Griffiths
+*/
 
-const renderer = require('truwrap')({
+/* eslint xo/no-process-exit:0 */
+
+import trucolor from 'trucolor'
+import truwrap from 'truwrap'
+import yargs from 'yargs'
+import readPkg from 'read-pkg-up'
+import updateNotifier from 'update-notifier'
+
+import termNG from '../..'
+
+const clr = trucolor.simplePalette()
+
+const _package = readPkg.sync().pkg
+
+const renderer = truwrap({
 	right: 0,
 	outStream: process.stderr
 })
 
-const yargs = require('yargs').strict()
+const _yargs = yargs
+	.strict()
 	.options({
 		h: {
 			alias: 'help',
@@ -34,10 +49,7 @@ const yargs = require('yargs').strict()
 	.command('is-enhanced', 'Is the current terminal using an enhanced termcap? (set $TERM_ENHANCED=enabled)')
 	.command('user-agent', 'Print the current terminal software')
 	.wrap(renderer.getWidth())
-
-const argv = yargs.argv
-const termNG = require('../../index')
-const _package = require('../../package.json')
+const argv = _yargs.argv
 
 const usage = `
 ${clr.title}term-ng${clr.title.out} ${clr.dim}v${_package.version}${clr.dim.out}
@@ -62,7 +74,7 @@ if (!(process.env.USER === 'root' && process.env.SUDO_USER !== process.env.USER)
 if (argv.help) {
 	renderer.write(usage)
 	renderer.break(2)
-	renderer.write(yargs.getUsageInstance().help())
+	renderer.write(_yargs.getUsageInstance().help())
 	renderer.break()
 	renderer.write(epilogue)
 	renderer.break(2)

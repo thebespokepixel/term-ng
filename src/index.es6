@@ -1,4 +1,3 @@
-'use strict'
 /*
 	Term-NG: Next Generation Terminal Feature Exposure/Whitelisting
 
@@ -24,18 +23,15 @@
 	SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-if ((process.env.ITERM_SESSION_ID && process.env.ITERM_SESSION_ID.includes(':')) || (process.env.TERM_COLOR && process.env.TERM_COLOR.includes('16m'))) {
-	if (!(/\-color/.test(process.argv.join('')))) {
-		process.argv.splice(2, 0, '--color=16m')
-	}
-}
+import './lib/argv'
 
-const supportsColor = require('supports-color')
+import supportsColor from 'supports-color'
 
-module.exports = {
+const termNG = {
 	color: {
-		basic: supportsColor.hasBasic || false,
 		level: supportsColor.level || 0,
+		basic: supportsColor.hasBasic || false,
+		hasBasic: supportsColor.hasBasic || false,
 		has256: supportsColor.level >= 2,
 		has16m: supportsColor.level >= 3
 	},
@@ -51,3 +47,5 @@ module.exports = {
 	},
 	software: process.env.TERM_PROGRAM || process.env.TERMKIT_HOST_APP || process.env.TERM || process.env.GULP
 }
+
+export default termNG

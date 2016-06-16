@@ -1,8 +1,8 @@
-'use strict'
-
 import shell from 'shelljs'
 import test from 'ava'
-import pkg from '../package.json'
+import readPkg from 'read-pkg-up'
+
+const pkg = readPkg.sync().pkg
 
 test.cb(`Module name/version is '${pkg.name}'.`, t => {
 	shell.exec('/usr/bin/env node ../lib/cli/index.js -vv', {
