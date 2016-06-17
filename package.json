@@ -54,7 +54,7 @@
     "supports-color": "^3.1.2",
     "trucolor": "*",
     "truwrap": "*",
-    "update-notifier": "^1.0.0",
+    "update-notifier": "^1.0.1",
     "yargs": "^4.4.0"
   },
   "xo": {
