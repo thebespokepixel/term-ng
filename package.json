@@ -41,7 +41,7 @@
   },
   "homepage": "https://github.com/MarkGriffiths/term-ng#readme",
   "devDependencies": {
-    "@thebespokepixel/cordial": "*",
+    "@thebespokepixel/cordial": "0.16.1",
     "ava": "^0.15.2",
     "gulp": "github:gulpjs/gulp#4.0",
     "shelljs": "^0.7.0",
