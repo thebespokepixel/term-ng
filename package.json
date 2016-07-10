@@ -55,7 +55,7 @@
     "trucolor": "*",
     "truwrap": "*",
     "update-notifier": "^1.0.0",
-    "yargs": "^4.4.0"
+    "yargs": "^4.8.0"
   },
   "xo": {
     "semicolon": false,
