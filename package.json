@@ -48,7 +48,7 @@
     "xo": "^0.16.0"
   },
   "dependencies": {
-    "core-js": "*",
+    "core-js": "2.4.1",
     "deep-assign": "^2.0.0",
     "read-pkg-up": "^1.0.1",
     "supports-color": "^3.1.2",
