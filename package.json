@@ -42,7 +42,7 @@
   "homepage": "https://github.com/MarkGriffiths/term-ng#readme",
   "devDependencies": {
     "@thebespokepixel/cordial": "*",
-    "ava": "^0.15.2",
+    "ava": "^0.16.0",
     "gulp": "github:gulpjs/gulp#4.0",
     "shelljs": "^0.7.0",
     "xo": "^0.16.0"
