@@ -50,7 +50,7 @@
   "dependencies": {
     "core-js": "*",
     "deep-assign": "^2.0.0",
-    "read-pkg-up": "^1.0.1",
+    "read-pkg-up": "^2.0.0",
     "supports-color": "^3.1.2",
     "trucolor": "*",
     "truwrap": "*",
