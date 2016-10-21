@@ -1,6 +1,6 @@
 {
   "name": "term-ng",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "description": "Terminal/$TERM feature snooping and whitelisting",
   "main": "index.js",
   "jsnext:main": "index-es.js",
@@ -99,7 +99,7 @@
         "title": "github",
         "text": "source",
         "color": "4E73B6",
-        "link": "https://github.com/MarkGriffiths/n-selector"
+        "link": "https://github.com/MarkGriffiths/term-ng"
       }
     },
     "readme": {
