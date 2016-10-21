@@ -2,6 +2,7 @@ language: node_js
 node_js:
   - 4
   - 5
+  - 6
   - stable
 sudo: false
 before_install: npm i -g npm@latest
@@ -12,3 +13,8 @@ notifications:
     on_success: always
     on_failure: change
     on_start: never
+addons:
+    code_climate:
+      repo_token: 012c23c52acfc69e8e093fead45270c7a65abf63bc7bfc431955e1b2eb7d890b
+after_script:
+  - nyc report --reporter=text-lcov | codeclimate-test-reporter
