@@ -20,3 +20,6 @@ exclude_paths:
 - bin/
 - scripts/
 - lib/
+- index.js
+- index-es.js
+- gulpfile.js
