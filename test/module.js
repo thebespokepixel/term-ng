@@ -1,5 +1,5 @@
 import test from 'ava'
-import termNG from '../index.js'
+import termNG from '..'
 
 test(`Module returns an object with correct properties.`, t => {
 	t.plan(6)

@@ -72,8 +72,12 @@
     "semicolon": false,
     "esnext": true,
     "ignores": [
+      "index.js",
+      "index-es.js",
       "lib/**/*.js",
-      "bin/*.js"
+      "bin/*.js",
+      "docs/**",
+      "src/docs/example.js"
     ]
   },
   "ava": {
@@ -135,5 +139,5 @@
       ]
     ]
   },
-  "buildNumber": 134
+  "buildNumber": 135
 }
