@@ -52,15 +52,15 @@
     "ava": "^0.16.0",
     "codeclimate-test-reporter": "^0.4.0",
     "documentation": "^4.0.0-beta11",
-    "documentation-theme-bespoke": "^0.2.7",
+    "documentation-theme-bespoke": "^0.2.10",
     "gulp": "github:gulpjs/gulp#4.0",
     "nyc": "^8.3.2",
     "shelljs": "^0.7.4",
-    "supports-color": "^3.1.2",
     "snyk": "^1.19.1",
     "xo": "^0.17.0"
   },
   "dependencies": {
+    "@thebespokepixel/meta": "^0.1.6",
     "deep-assign": "^2.0.0",
     "read-pkg-up": "^2.0.0",
     "trucolor": "^0.5.5",
@@ -135,5 +135,5 @@
       ]
     ]
   },
-  "buildNumber": 118
+  "buildNumber": 134
 }

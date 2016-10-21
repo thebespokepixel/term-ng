@@ -6,13 +6,14 @@
 import trucolor from 'trucolor'
 import truwrap from 'truwrap'
 import yargs from 'yargs'
-import readPkg from 'read-pkg-up'
+import meta from '@thebespokepixel/meta'
 import updateNotifier from 'update-notifier'
+import readPkg from 'read-pkg-up'
 import termNG from '.'
 
-const clr = trucolor.simplePalette()
-
 const _package = readPkg.sync().pkg
+const clr = trucolor.simplePalette()
+const metadata = meta(__dirname)
 
 const renderer = truwrap({
 	right: 0,
@@ -78,8 +79,7 @@ if (argv.help) {
 }
 
 if (argv.version) {
-	const version = _package.buildNumber > 0 ? `${_package.version}-Δ${_package.buildNumber}` : `${_package.version}`
-	process.stdout.write(argv.version > 1 ? `${_package.name} v${version}` : version)
+	process.stdout.write(metadata.version(argv.version))
 	process.exit(0)
 }
 

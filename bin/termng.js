@@ -6,8 +6,9 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 var trucolor = _interopDefault(require('trucolor'));
 var truwrap = _interopDefault(require('truwrap'));
 var yargs = _interopDefault(require('yargs'));
-var readPkg = _interopDefault(require('read-pkg-up'));
+var meta = _interopDefault(require('@thebespokepixel/meta'));
 var updateNotifier = _interopDefault(require('update-notifier'));
+var readPkg = _interopDefault(require('read-pkg-up'));
 
 const itermSession = process.env.ITERM_SESSION_ID && process.env.ITERM_SESSION_ID.indexOf(':') > 0;
 const termColor = process.env.TERM_COLOR && process.env.TERM_COLOR.indexOf('16m') >= 0;
@@ -18,7 +19,80 @@ if (has16m && !/\-color/.test(process.argv.join(''))) {
 	process.argv.splice(2, 0, '--color=16m');
 }
 
-const supportsColor = require('supports-color');
+const hasFlag = flag => {
+	const terminatorPos = process.argv.indexOf('--');
+	const prefix = /^-{1,2}/.test(flag) ? '' : '--';
+	const pos = process.argv.indexOf(prefix + flag);
+
+	return pos !== -1 && (terminatorPos === -1 ? true : pos < terminatorPos);
+};
+
+const support = level => {
+	if (level === 0) {
+		return false;
+	}
+
+	return {
+		level,
+		hasBasic: true,
+		has256: level >= 2,
+		has16m: level >= 3
+	};
+};
+
+let supportLevel = (() => {
+	if (hasFlag('no-color') || hasFlag('no-colors') || hasFlag('color=false')) {
+		return 0;
+	}
+
+	if (hasFlag('color=16m') || hasFlag('color=full') || hasFlag('color=truecolor')) {
+		return 3;
+	}
+
+	if (hasFlag('color=256')) {
+		return 2;
+	}
+
+	if (hasFlag('color') || hasFlag('colors') || hasFlag('color=true') || hasFlag('color=always')) {
+		return 1;
+	}
+
+	if (process.stdout && !process.stdout.isTTY) {
+		return 0;
+	}
+
+	if (process.platform === 'win32') {
+		return 1;
+	}
+
+	if ('CI' in process.env || 'TEAMCITY_VERSION' in process.env) {
+		return 0;
+	}
+
+	if ('COLORTERM' in process.env) {
+		return 1;
+	}
+
+	if (process.env.TERM === 'dumb') {
+		return 0;
+	}
+
+	if (/^xterm-256(?:color)?/.test(process.env.TERM)) {
+		return 2;
+	}
+
+	if (/^screen|^xterm|^vt100|color|ansi|cygwin|linux/i.test(process.env.TERM)) {
+		return 1;
+	}
+
+	return 0;
+})();
+
+if (supportLevel === 0 && 'FORCE_COLOR' in process.env) {
+	supportLevel = 1;
+}
+
+const supportsColor = process && support(supportLevel);
 
 const termNG = {
 	color: {
@@ -46,9 +120,9 @@ const termNG = {
 	software: process.env.TERM_PROGRAM || process.env.TERMKIT_HOST_APP || process.env.TERM || process.env.GULP
 };
 
-const clr = trucolor.simplePalette();
-
 const _package = readPkg.sync().pkg;
+const clr = trucolor.simplePalette();
+const metadata = meta(__dirname);
 
 const renderer = truwrap({
 	right: 0,
@@ -102,8 +176,7 @@ if (argv.help) {
 }
 
 if (argv.version) {
-	const version = _package.buildNumber > 0 ? `${ _package.version }-Δ${ _package.buildNumber }` : `${ _package.version }`;
-	process.stdout.write(argv.version > 1 ? `${ _package.name } v${ version }` : version);
+	process.stdout.write(metadata.version(argv.version));
 	process.exit(0);
 }
 
