@@ -1,18 +1,25 @@
 {
   "name": "term-ng",
-  "version": "0.6.3",
+  "version": "0.7.0",
   "description": "Terminal/$TERM feature snooping and whitelisting",
   "main": "index.js",
+  "jsnext:main": "index-es.js",
   "bin": {
     "termng": "./bin/termng.js"
   },
   "files": [
     "index.js",
-    "lib",
+    "index-es6.js",
     "bin"
   ],
   "scripts": {
-    "test": "xo && ava",
+    "test": "xo && snyk test && nyc ava",
+    "doc-serve": "documentation serve --watch --theme node_modules/documentation-theme-bespoke --github --config src/docs/documentation.yml --name $npm_package_name  --project-version $npm_package_version src/index.js",
+    "doc-build": "documentation build --format html --output docs --theme node_modules/documentation-theme-bespoke --github --config src/docs/documentation.yml --name $npm_package_name  --project-version $npm_package_version src/index.js",
+    "readme": "compile-readme -u src/docs/example.js src/docs/readme.md > readme.md",
+    "code-climate": "nyc report --reporter=text-lcov | codeclimate-test-reporter",
+    "coverage": "nyc ava && nyc report --reporter=lcov --report-dir test/coverage; open test/coverage/lcov-report/index.html",
+    "clean": "gulp clean",
     "colors": "scripts/colortest.pl"
   },
   "repository": {
@@ -20,7 +27,7 @@
     "url": "https://github.com/MarkGriffiths/term-ng.git"
   },
   "engines": {
-    "node": ">=4.0 <7.0"
+    "node": ">=4.0 <8.0"
   },
   "keywords": [
     "24bit",
@@ -41,28 +48,36 @@
   },
   "homepage": "https://github.com/MarkGriffiths/term-ng#readme",
   "devDependencies": {
-    "@thebespokepixel/cordial": "*",
-    "ava": "^0.15.2",
+    "@thebespokepixel/cordial": "^0.17.9",
+    "ava": "^0.16.0",
+    "codeclimate-test-reporter": "^0.4.0",
+    "documentation": "^4.0.0-beta11",
+    "documentation-theme-bespoke": "^0.2.10",
     "gulp": "github:gulpjs/gulp#4.0",
-    "shelljs": "^0.7.0",
-    "xo": "^0.16.0"
+    "nyc": "^8.3.2",
+    "shelljs": "^0.7.4",
+    "snyk": "^1.19.1",
+    "xo": "^0.17.0"
   },
   "dependencies": {
-    "core-js": "*",
+    "@thebespokepixel/meta": "^0.1.6",
     "deep-assign": "^2.0.0",
-    "read-pkg-up": "^1.0.1",
-    "supports-color": "^3.1.2",
-    "trucolor": "*",
-    "truwrap": "*",
-    "update-notifier": "^1.0.0",
-    "yargs": "^4.4.0"
+    "read-pkg-up": "^2.0.0",
+    "trucolor": "^0.5.5",
+    "truwrap": "^0.6.3",
+    "update-notifier": "^1.0.2",
+    "yargs": "^6.3.0"
   },
   "xo": {
     "semicolon": false,
     "esnext": true,
     "ignores": [
+      "index.js",
+      "index-es.js",
       "lib/**/*.js",
-      "bin/*.js"
+      "bin/*.js",
+      "docs/**",
+      "src/docs/example.js"
     ]
   },
   "ava": {
@@ -71,6 +86,58 @@
       "test/*.js"
     ]
   },
-  "buildNumber": 0,
-  "jsnext:main": "lib/index-es6.js"
+  "badges": {
+    "github": "MarkGriffiths",
+    "npm": "thebespokepixel",
+    "name": "term-ng",
+    "providers": {
+      "status": {
+        "text": "beta",
+        "color": "blue"
+      },
+      "aux1": {
+        "title": "github",
+        "text": "source",
+        "color": "4E73B6",
+        "link": "https://github.com/MarkGriffiths/n-selector"
+      }
+    },
+    "readme": {
+      "Status": [
+        [
+          "status",
+          "npm",
+          "travis",
+          "david"
+        ],
+        [
+          "code-climate",
+          "code-climate-coverage",
+          "snyk"
+        ]
+      ],
+      "Developer": [
+        "david-dev",
+        "rollup"
+      ],
+      "Help": [
+        "inch",
+        "gitter"
+      ]
+    },
+    "docs": [
+      [
+        "aux1",
+        "travis"
+      ],
+      [
+        "code-climate",
+        "code-climate-coverage"
+      ],
+      [
+        "david"
+      ]
+    ]
+  },
+  "buildNumber": 0
 }

@@ -1,0 +1,672 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>term-ng 0.7.0 | Documentation</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href="assets/css/ace.min.css" rel="stylesheet">
+  <link href="assets/fonts/TypoPRO-Hack/TypoPRO-Hack.css" type="text/css" rel="stylesheet" />
+  <link href="assets/fonts/TypoPRO-FiraSans/TypoPRO-FiraSans.css" type="text/css" rel="stylesheet" />
+  <link href="assets/css/style.css" type="text/css" rel="stylesheet" />
+</head>
+<body class="m0 documentation">
+  <div class="flex">
+    <div class="flex-column fixed top-0 bottom-0 px2 pt2 xs-hide overflow-auto max-height-100 sidebar">
+      <h3 class="m0 no-anchor">term-ng</h3>
+      <div class="mb1"><code>v0.7.0</code></div>
+      <input
+        placeholder="Filter"
+        id="filter-input"
+        class="col12 block input"
+        type="text" />
+      <div id="toc">
+        <ul class="list-reset h5 py1-ul">
+          
+            
+            <li><a
+              href="#usage"
+              class="h5 bold black caps">
+              Usage
+              
+            </a>
+            
+            </li>
+          
+            
+            <li><a
+              href="#cli"
+              class="h5 bold black caps">
+              CLI
+              
+            </a>
+            
+            </li>
+          
+            
+            <li><a
+              href="#enhancing-termcap"
+              class="h5 bold black caps">
+              Enhancing termcap
+              
+            </a>
+            
+            </li>
+          
+            
+            <li><a
+              href="#api"
+              class="h5 bold black caps">
+              API
+              
+            </a>
+            
+            </li>
+          
+            
+            <li><a
+              href="#termng"
+              class=" toggle-sibling">
+              termNG
+              <span class="icon">▸</span>
+            </a>
+            
+            <div class="toggle-target display-none">
+              
+              <ul class="list-reset py1-ul pl1">
+                <li class="h5"><span>Static members</span></li>
+                
+                  <li><a
+                    href="#termNG.color"
+                    class="regular pre-open">
+                    .color
+                  </a></li>
+                
+                  <li><a
+                    href="#termNG.images"
+                    class="regular pre-open">
+                    .images
+                  </a></li>
+                
+                  <li><a
+                    href="#termNG.audio"
+                    class="regular pre-open">
+                    .audio
+                  </a></li>
+                
+                  <li><a
+                    href="#termNG.font"
+                    class="regular pre-open">
+                    .font
+                  </a></li>
+                
+                  <li><a
+                    href="#termNG.termcap"
+                    class="regular pre-open">
+                    .termcap
+                  </a></li>
+                
+                  <li><a
+                    href="#termNG.software"
+                    class="regular pre-open">
+                    .software
+                  </a></li>
+                
+                </ul>
+              
+              
+              
+            </div>
+            
+            </li>
+          
+        </ul>
+      </div>
+      <div class="badges"><p><a href="https://github.com/MarkGriffiths/n-selector" title="Github"><img src="https://img.shields.io/badge/github-source-4E73B6.svg?style=flat" alt="Github"></a> <a href="https://travis-ci.org/MarkGriffiths/term-ng" title="Travis"><img src="https://img.shields.io/travis/MarkGriffiths/term-ng.svg?branch=master&#x26;style=flat" alt="Travis"></a> <br>
+</p>
+ 
+<p><a href="https://codeclimate.com/github/MarkGriffiths/term-ng" title="Code-climate"><img src="https://codeclimate.com/github/MarkGriffiths/term-ng/badges/gpa.svg?style=flat" alt="Code-climate"></a> <a href="https://codeclimate.com/github/MarkGriffiths/term-ng/coverage" title="Coverage"><img src="https://codeclimate.com/github/MarkGriffiths/term-ng/badges/coverage.svg?style=flat" alt="Coverage"></a> <br>
+</p>
+ 
+<p><a href="https://david-dm.org/MarkGriffiths/term-ng/master" title="David"><img src="https://img.shields.io/david/MarkGriffiths/term-ng.svg?branch=master&#x26;style=flat" alt="David"></a> <br>
+</p>
+ 
+<br>
+
+</div>
+      <div class="mt1 h6 quiet">
+        <a href="http://documentation.js.org/reading-documentation.html">Need help reading this?</a>
+      </div>
+    </div>
+    <div class="flex-column px2 xs-hide sidespace">
+      <h3 class="mb0 no-anchor">term-ng</h3>
+    </div>
+    <div class="flex-auto px2 pt1">
+      
+        
+          <div class="keyline-top-not py1"><section class="py0 px2 clearfix note">
+	
+	<h3>Usage</h3>
+<h4>Installation</h4>
+<pre><code class="language-shell">npm install --save term-ng
+</code></pre>
+
+</section>
+</div>
+        
+      
+        
+          <div class="keyline-top-not py1"><section class="py0 px2 clearfix note">
+	
+	<h3 id="CLI" class="m0">
+		CLI
+	</h3>
+	
+	
+		<pre><code class="language-shell">  > npm install --global term-ng
+  > term-ng --help
+
+  term-ng v0.6.3
+
+  Allow user configured enhanced terminal capabilities to be queried.
+
+  The command will exit with status 0 if all the provided queries (except
+  user-agent) are true, otherwise exits with status 1.
+
+  If user-agent is used, the command will return the string on stdout and exit
+  status 0.
+
+  Usage:
+  termng [command]
+
+  Commands:
+  has-color      Is basic color supported?
+  has-256        Is 256 color supported?
+  has-16m        Is 24 bit color supported?
+  has-images     Are images supported? (set $TERM_IMAGES=enabled)
+  has-audio      Is audio supported? (set $TERM_AUDIO=enabled)
+  has-box-font   Is audio supported? (set $TERM_FONT=box)
+  has-full-font  Is audio supported? (set $TERM_FONT=full)
+  is-enhanced    Is the current terminal using an enhanced termcap?
+                 (set $TERM_ENHANCED=enabled)
+  user-agent     Print the current terminal software
+
+  Options:
+  -h, --help     Display this help.
+  -v, --version  Return the current version on stdout. -vv Return name &#x26; version.
+  --color        Force color depth --color=256|16m. Disable with --no-color
+
+  © 2016 The Bespoke Pixel. Released under the MIT License.
+</code></pre>
+
+	
+</section>
+</div>
+        
+      
+        
+          <div class="keyline-top-not py1"><section class="py0 px2 clearfix note">
+	
+	<h3 id="Enhancing termcap" class="m0">
+		Enhancing termcap
+	</h3>
+	
+	
+		<p>In some of my 'private' admin/control systems, I use a customised terminfo
+database that wraps some of the (very useful) enhanced OSC abilities of
+more recent iTerm builds into new commands available via <code>tput</code> (which I
+further wrap in fish functions).</p>
+<p>The <code>terminfo</code> directory above contains <code>iTerm.ti</code>. Using <code>/usr/bin/tic</code>
+and ncurses' terminfo database (available from
+<a href="http://invisible-island.net/ncurses/ncurses.html#downloads">invisible-island.net</a>),
+I build a new terminal type <code>xterm-256color+iterm3</code>, and change the
+Terminal type preference in iTerm to the same, setting the $TERM
+environment variable.</p>
+<p>The new terminfo entries are built thusly...</p>
+<pre><code class="language-shell">cd term-ng/terminfo
+curl http:                                                        
+gunzip terminfo.src.gz
+tic -xrs -e xterm-256color terminfo.src
+tic -xsv3 iTerm.ti
+</code></pre>
+<p>This create a new, updated xterm-256color and then extends it for iTerm.
+This is non-destructive as it creates new entries at <code>~/.terminfo/</code>.
+Simply delete this directory to return the terminfo databases back to the
+original OS provided state.</p>
+<p>A word of caution... while this has worked very well for me, I have found
+that some things complain about an unrecognized term type - Homebrew is
+notable here. A simple workaround is to have a standard <code>xterm-256color</code>
+session profile defined to use when brewing.</p>
+
+	
+</section>
+</div>
+        
+      
+        
+          <div class="keyline-top-not py1"><section class="py0 px2 clearfix note">
+	
+	<h3 id="API" class="m0">
+		API
+	</h3>
+	
+	
+		<p>Returned object describing terminal features.</p>
+
+	
+</section>
+</div>
+        
+      
+        
+          <section class="py2 px3 mb2 clearfix bg-white rounded minishadow">
+
+  
+  <div class="clearfix">
+    <h3 class="left m0 panel-title" id="termng">
+      termNG  
+    </h3>
+    
+      <a class="pl3 pr1 right rounded github" href="https://github.com/MarkGriffiths/term-ng/blob/b9f63ae0a0db56c37eb38b2c8137f15969dc9458/src/index.js#L103-L162">src/index.js</a>
+    
+  </div>
+  
+
+  <p>Terminal features.</p>
+
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Static Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='termNG.color'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>color</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class="py2 px3 mb2 clearfix bg-white rounded minishadow">
+
+  
+
+  <p>Supported terminal color depth.</p>
+
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Properties</div>
+    <div>
+      
+        <div class="space-bottom0">
+          <span class="code bold">level</span> <code class="quiet">(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+          : 0 = None, 1 = Basic, 2 = 256 colors, 3 = 24 bit color
+
+          
+        </div>
+      
+        <div class="space-bottom0">
+          <span class="code bold">basic</span> <code class="quiet">(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a>)</code>
+          : Is there basic color support?
+
+          
+        </div>
+      
+        <div class="space-bottom0">
+          <span class="code bold">has256</span> <code class="quiet">(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a>)</code>
+          : Terminal supports 256 colors
+
+          
+        </div>
+      
+        <div class="space-bottom0">
+          <span class="code bold">has16m</span> <code class="quiet">(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a>)</code>
+          : Terminal supports 16 million (24 bit) color
+
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='termNG.images'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>images</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class="py2 px3 mb2 clearfix bg-white rounded minishadow">
+
+  
+
+  <p>Does the terminal support inline images?</p>
+
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Example</div>
+      
+      <p>To set:</p>
+
+      <pre class="p1 overflow-auto rounded bg-darken-1">env TERM_IMAGES=enabled</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='termNG.audio'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>audio</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class="py2 px3 mb2 clearfix bg-white rounded minishadow">
+
+  
+
+  <p>Does the terminal support audio?</p>
+
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Example</div>
+      
+      <p>To set:</p>
+
+      <pre class="p1 overflow-auto rounded bg-darken-1">env TERM_AUDIO=enabled</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='termNG.font'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>font</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class="py2 px3 mb2 clearfix bg-white rounded minishadow">
+
+  
+
+  <p>Terminal font character set.</p>
+
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Properties</div>
+    <div>
+      
+        <div class="space-bottom0">
+          <span class="code bold">basic</span> <code class="quiet">(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a>)</code>
+          : Font has basic box drawing symbols.
+
+          
+        </div>
+      
+        <div class="space-bottom0">
+          <span class="code bold">enhanced</span> <code class="quiet">(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a>)</code>
+          : Font has 'full' Unicode character support
+
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Example</div>
+      
+      <p>To set:</p>
+
+      <pre class="p1 overflow-auto rounded bg-darken-1">env TERM_FONT=[box|full]</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='termNG.termcap'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>termcap</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class="py2 px3 mb2 clearfix bg-white rounded minishadow">
+
+  
+
+  <p>Termcap support</p>
+
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Properties</div>
+    <div>
+      
+        <div class="space-bottom0">
+          <span class="code bold">basic</span> <code class="quiet">(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a>)</code>
+          : Using the default termcap.
+
+          
+        </div>
+      
+        <div class="space-bottom0">
+          <span class="code bold">enhanced</span> <code class="quiet">(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a>)</code>
+          : Using an enhanced/custom termcap.
+
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+    <div class="py1 quiet mt1 prose-big">Example</div>
+      
+      <p>To set:</p>
+
+      <pre class="p1 overflow-auto rounded bg-darken-1">env TERM_ENHANCED=enabled</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='termNG.software'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>software</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class="py2 px3 mb2 clearfix bg-white rounded minishadow">
+
+  
+
+  <p>Name of running terminal software, i.e. 'iTerm.app'</p>
+
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+
+  
+</section>
+
+        
+      
+    </div>
+  </div>
+  <script src="assets/js/anchor.min.js"></script>
+  <script src="assets/js/site.js"></script>
+</body>
+</html>
