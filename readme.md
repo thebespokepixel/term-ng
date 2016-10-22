@@ -15,6 +15,7 @@
 
 [![Inch](https://inch-ci.org/github/MarkGriffiths/term-ng.svg?branch=master&style=shields)](https://inch-ci.org/github/MarkGriffiths/term-ng "Inch") [![Gitter](https://img.shields.io/gitter/room/MarkGriffiths/help.svg?style=flat)](https://gitter.im/MarkGriffiths/help?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge "Gitter")   
 
+
 ## TermNG (Next Generation)
 
 -   Senses 24bit colour (truecolor) when `$TERM_COLOR=16m` environment variable is set.
@@ -38,12 +39,6 @@ In bash an `export TERM_IMAGES=enabled` in `~/.bashrc` will do the trick. I don'
 
 ### Usage
 
-#### Installation
-
-```shell
-npm install --save term-ng
-```
-
 ### Terminal Color Test
 
 From inside the package directory, running `npm run-script colors` will generate a preview of the entire color gamut your terminal is capable of. Output of a recent iTerm shown below:
@@ -51,6 +46,7 @@ From inside the package directory, running `npm run-script colors` will generate
 ![Color preview][colors]
 
 [colors]: https://raw.githubusercontent.com/MarkGriffiths/term-ng/master/media/colors.png
+
 
 ## Documentation
 
