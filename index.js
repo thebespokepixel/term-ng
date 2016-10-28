@@ -5,7 +5,7 @@ const termColor = process.env.TERM_COLOR && process.env.TERM_COLOR.indexOf('16m'
 
 const has16m = itermSession || termColor
 
-if (has16m && !/\-color/.test(process.argv.join(''))) {
+if (has16m && !/-color/.test(process.argv.join(''))) {
 	process.argv.splice(2, 0, '--color=16m')
 }
 
