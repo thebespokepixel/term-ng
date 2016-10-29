@@ -1,6 +1,6 @@
 {
   "name": "term-ng",
-  "version": "0.7.5",
+  "version": "0.7.6",
   "description": "Terminal/$TERM feature snooping and whitelisting",
   "main": "index.js",
   "jsnext:main": "index-es.js",
@@ -16,7 +16,7 @@
     "test": "xo && snyk test && nyc ava",
     "doc-serve": "documentation serve --watch --theme node_modules/documentation-theme-bespoke --github --config src/docs/documentation.yml --name $npm_package_name  --project-version $npm_package_version src/index.js",
     "doc-build": "documentation build --format html --output docs --theme node_modules/documentation-theme-bespoke --github --config src/docs/documentation.yml --name $npm_package_name  --project-version $npm_package_version src/index.js",
-    "readme": "compile-readme -u src/docs/example.js src/docs/readme.md > readme.md",
+    "readme": "compile-readme -u src/docs/example.md src/docs/readme.md > readme.md",
     "code-climate": "nyc report --reporter=text-lcov | codeclimate-test-reporter",
     "coverage": "nyc ava && nyc report --reporter=lcov --report-dir test/coverage; open test/coverage/lcov-report/index.html",
     "clean": "gulp clean",
