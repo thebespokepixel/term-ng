@@ -62,7 +62,7 @@
     "@thebespokepixel/meta": "^0.1.8",
     "deep-assign": "^2.0.0",
     "read-pkg": "^2.0.0",
-    "trucolor": "^0.6.2",
+    "trucolor": "^0.6.3",
     "truwrap": "^0.6.3",
     "update-notifier": "^1.0.2",
     "yargs": "^6.3.0"
@@ -138,5 +138,5 @@
       ]
     ]
   },
-  "buildNumber": 1
+  "buildNumber": 4
 }

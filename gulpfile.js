@@ -33,7 +33,7 @@ gulp.task('cli', gulp.series(
 
 // Clean
 gulp.task('clean', cordial.shell({
-	source: ['npm-debug.log', './nyc_output', './coverage']
+	source: ['bin/*', 'npm-debug.log', './nyc_output', './coverage']
 }).trash())
 
 // Docs

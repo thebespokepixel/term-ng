@@ -4,7 +4,7 @@
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
 var path = require('path');
-var trucolor = _interopDefault(require('trucolor'));
+var trucolor = require('trucolor');
 var truwrap = _interopDefault(require('truwrap'));
 var yargs = _interopDefault(require('yargs'));
 var meta = _interopDefault(require('@thebespokepixel/meta'));
@@ -122,7 +122,7 @@ const termNG = {
 };
 
 const pkg = readPkg.sync(path.resolve(__dirname, '..'));
-const clr = trucolor.simplePalette();
+const clr = trucolor.simple({ format: 'sgr' });
 const metadata = meta(__dirname);
 
 const renderer = truwrap({
