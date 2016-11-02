@@ -64,7 +64,7 @@
     "deep-assign": "^2.0.0",
     "read-pkg-up": "^2.0.0",
     "trucolor": "^0.5.5",
-    "truwrap": "^0.6.3",
+    "truwrap": "^0.7.1",
     "update-notifier": "^1.0.2",
     "yargs": "^6.3.0"
   },
