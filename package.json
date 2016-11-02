@@ -52,18 +52,18 @@
     "ava": "^0.16.0",
     "codeclimate-test-reporter": "^0.4.0",
     "documentation": "^4.0.0-beta11",
-    "documentation-theme-bespoke": "^0.3.2",
+    "documentation-theme-bespoke": "^0.3.4",
     "gulp": "github:gulpjs/gulp#4.0",
-    "nyc": "^8.3.2",
+    "nyc": "^8.4.0",
     "shelljs": "^0.7.4",
     "xo": "^0.17.0"
   },
   "dependencies": {
-    "@thebespokepixel/meta": "^0.1.8",
+    "@thebespokepixel/meta": "^0.1.9",
     "deep-assign": "^2.0.0",
     "read-pkg": "^2.0.0",
     "trucolor": "^0.6.3",
-    "truwrap": "^0.6.3",
+    "truwrap": "^0.7.1",
     "update-notifier": "^1.0.2",
     "yargs": "^6.3.0"
   },
@@ -138,5 +138,5 @@
       ]
     ]
   },
-  "buildNumber": 7
+  "buildNumber": 12
 }

@@ -5,7 +5,7 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 
 var path = require('path');
 var trucolor = require('trucolor');
-var truwrap = _interopDefault(require('truwrap'));
+var truwrap = require('truwrap');
 var yargs = _interopDefault(require('yargs'));
 var meta = _interopDefault(require('@thebespokepixel/meta'));
 var updateNotifier = _interopDefault(require('update-notifier'));
@@ -125,7 +125,7 @@ const pkg = readPkg.sync(path.resolve(__dirname, '..'));
 const clr = trucolor.simple({ format: 'sgr' });
 const metadata = meta(__dirname);
 
-const renderer = truwrap({
+const renderer = truwrap.truwrap({
 	right: 0,
 	outStream: process.stderr
 });
@@ -156,9 +156,9 @@ The command will exit with status 0 if all the provided queries (except user-age
 If user-agent is used, the command will return the string on stdout and exit status 0.
 
 ${ clr.title }Usage:${ clr.title.out }
-${ clr.command }termng ${ clr.option }[command]`;
+${ clr.command }termng ${ clr.option }[command]${ clr.option.out }`;
 
-const epilogue = `${ clr.command }© 2016 The Bespoke Pixel. ${ clr.grey }Released under the MIT License.${ clr.grey.out }`;
+const epilogue = `${ clr.title }© 2016 The Bespoke Pixel. ${ clr.grey }Released under the MIT License.${ clr.grey.out }`;
 
 if (!(process.env.USER === 'root' && process.env.SUDO_USER !== process.env.USER)) {
 	updateNotifier({

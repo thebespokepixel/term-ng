@@ -5,7 +5,7 @@
 
 import {resolve} from 'path'
 import {simple} from 'trucolor'
-import truwrap from 'truwrap'
+import {truwrap} from 'truwrap'
 import yargs from 'yargs'
 import meta from '@thebespokepixel/meta'
 import updateNotifier from 'update-notifier'
@@ -59,9 +59,9 @@ The command will exit with status 0 if all the provided queries (except user-age
 If user-agent is used, the command will return the string on stdout and exit status 0.
 
 ${clr.title}Usage:${clr.title.out}
-${clr.command}termng ${clr.option}[command]`
+${clr.command}termng ${clr.option}[command]${clr.option.out}`
 
-const epilogue = `${clr.command}© 2016 The Bespoke Pixel. ${clr.grey}Released under the MIT License.${clr.grey.out}`
+const epilogue = `${clr.title}© 2016 The Bespoke Pixel. ${clr.grey}Released under the MIT License.${clr.grey.out}`
 
 if (!(process.env.USER === 'root' && process.env.SUDO_USER !== process.env.USER)) {
 	updateNotifier({
