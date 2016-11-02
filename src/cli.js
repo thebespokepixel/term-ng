@@ -3,16 +3,17 @@
  ╰─────────┴──────────────────────────────────────────────────────────────────── */
 /* eslint unicorn/no-process-exit:0 */
 
-import trucolor from 'trucolor'
-import truwrap from 'truwrap'
+import {resolve} from 'path'
+import {simple} from 'trucolor'
+import {truwrap} from 'truwrap'
 import yargs from 'yargs'
 import meta from '@thebespokepixel/meta'
 import updateNotifier from 'update-notifier'
-import readPkg from 'read-pkg-up'
+import readPkg from 'read-pkg'
 import termNG from '.'
 
-const _package = readPkg.sync().pkg
-const clr = trucolor.simplePalette()
+const pkg = readPkg.sync(resolve(__dirname, '..'))
+const clr = simple({format: 'sgr'})
 const metadata = meta(__dirname)
 
 const renderer = truwrap({
@@ -49,7 +50,7 @@ const _yargs = yargs
 const argv = _yargs.argv
 
 const usage = `
-${clr.title}term-ng${clr.title.out} ${clr.dim}v${_package.version}${clr.dim.out}
+${clr.title}term-ng${clr.title.out} ${clr.dim}v${pkg.version}${clr.dim.out}
 
 Allow user configured enhanced terminal capabilities to be queried.
 
@@ -58,13 +59,13 @@ The command will exit with status 0 if all the provided queries (except user-age
 If user-agent is used, the command will return the string on stdout and exit status 0.
 
 ${clr.title}Usage:${clr.title.out}
-${clr.command}termng ${clr.option}[command]`
+${clr.command}termng ${clr.option}[command]${clr.option.out}`
 
-const epilogue = `${clr.command}© 2016 The Bespoke Pixel. ${clr.grey}Released under the MIT License.${clr.grey.out}`
+const epilogue = `${clr.title}© 2016 The Bespoke Pixel. ${clr.grey}Released under the MIT License.${clr.grey.out}`
 
 if (!(process.env.USER === 'root' && process.env.SUDO_USER !== process.env.USER)) {
 	updateNotifier({
-		pkg: _package
+		pkg
 	}).notify()
 }
 

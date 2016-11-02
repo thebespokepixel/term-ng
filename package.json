@@ -1,19 +1,19 @@
 {
   "name": "term-ng",
-  "version": "0.7.6",
+  "version": "0.7.7",
   "description": "Terminal/$TERM feature snooping and whitelisting",
   "main": "index.js",
   "jsnext:main": "index-es.js",
   "bin": {
-    "termng": "./bin/termng.js"
+    "termng": "./bin/termng"
   },
   "files": [
     "index.js",
-    "index-es6.js",
+    "index-es.js",
     "bin"
   ],
   "scripts": {
-    "test": "xo && snyk test && nyc ava",
+    "test": "xo && nyc ava",
     "doc-serve": "documentation serve --watch --theme node_modules/documentation-theme-bespoke --github --config src/docs/documentation.yml --name $npm_package_name  --project-version $npm_package_version src/index.js",
     "doc-build": "documentation build --format html --output docs --theme node_modules/documentation-theme-bespoke --github --config src/docs/documentation.yml --name $npm_package_name  --project-version $npm_package_version src/index.js",
     "readme": "compile-readme -u src/docs/example.md src/docs/readme.md > readme.md",
@@ -48,23 +48,22 @@
   },
   "homepage": "https://github.com/MarkGriffiths/term-ng#readme",
   "devDependencies": {
-    "@thebespokepixel/cordial": "^0.17.10",
+    "@thebespokepixel/cordial": "^0.17.11",
     "ava": "^0.16.0",
     "codeclimate-test-reporter": "^0.4.0",
     "documentation": "^4.0.0-beta11",
-    "documentation-theme-bespoke": "^0.3.2",
+    "documentation-theme-bespoke": "^0.3.4",
     "gulp": "github:gulpjs/gulp#4.0",
-    "nyc": "^8.3.2",
+    "nyc": "^8.4.0",
     "shelljs": "^0.7.4",
-    "snyk": "^1.19.1",
     "xo": "^0.17.0"
   },
   "dependencies": {
-    "@thebespokepixel/meta": "^0.1.8",
+    "@thebespokepixel/meta": "^0.1.9",
     "deep-assign": "^2.0.0",
-    "read-pkg-up": "^2.0.0",
-    "trucolor": "^0.5.5",
-    "truwrap": "^0.6.3",
+    "read-pkg": "^2.0.0",
+    "trucolor": "^0.6.3",
+    "truwrap": "^0.7.1",
     "update-notifier": "^1.0.2",
     "yargs": "^6.3.0"
   },
