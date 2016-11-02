@@ -22,12 +22,12 @@ gulp.task('cli', gulp.series(
 		source: 'src/cli.js'
 	}).rollup.babel({
 		banner: '#! /usr/bin/env node',
-		dest: 'bin/termng.js'
+		dest: 'bin/termng'
 	}),
 
 	cordial.shell().permissions({
 		mode: '755',
-		dest: 'bin/termng.js'
+		dest: 'bin/termng'
 	})
 ))
 

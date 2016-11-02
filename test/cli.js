@@ -1,8 +1,10 @@
+import {resolve} from 'path'
 import shell from 'shelljs'
 import test from 'ava'
-import readPkg from 'read-pkg-up'
+import readPkg from 'read-pkg'
 
-const pkg = readPkg.sync().pkg
+const pkg = readPkg.sync(resolve(__dirname, '..'))
+
 const expectedVersion = pkg.buildNumber === 0 ? pkg.version : `${pkg.version}-Δ${pkg.buildNumber}`
 
 test.cb(`Module name/version is '${pkg.name} v${expectedVersion}'.`, t => {

@@ -3,12 +3,13 @@
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
+var path = require('path');
 var trucolor = _interopDefault(require('trucolor'));
 var truwrap = _interopDefault(require('truwrap'));
 var yargs = _interopDefault(require('yargs'));
 var meta = _interopDefault(require('@thebespokepixel/meta'));
 var updateNotifier = _interopDefault(require('update-notifier'));
-var readPkg = _interopDefault(require('read-pkg-up'));
+var readPkg = _interopDefault(require('read-pkg'));
 
 const itermSession = process.env.ITERM_SESSION_ID && process.env.ITERM_SESSION_ID.indexOf(':') > 0;
 const termColor = process.env.TERM_COLOR && process.env.TERM_COLOR.indexOf('16m') >= 0;
@@ -120,7 +121,7 @@ const termNG = {
 	software: process.env.TERM_PROGRAM || process.env.TERMKIT_HOST_APP || process.env.TERM || process.env.GULP
 };
 
-const _package = readPkg.sync().pkg;
+const pkg = readPkg.sync(path.resolve(__dirname, '..'));
 const clr = trucolor.simplePalette();
 const metadata = meta(__dirname);
 
@@ -146,7 +147,7 @@ const _yargs = yargs.strict().options({
 const argv = _yargs.argv;
 
 const usage = `
-${ clr.title }term-ng${ clr.title.out } ${ clr.dim }v${ _package.version }${ clr.dim.out }
+${ clr.title }term-ng${ clr.title.out } ${ clr.dim }v${ pkg.version }${ clr.dim.out }
 
 Allow user configured enhanced terminal capabilities to be queried.
 
@@ -161,7 +162,7 @@ const epilogue = `${ clr.command }© 2016 The Bespoke Pixel. ${ clr.grey }Releas
 
 if (!(process.env.USER === 'root' && process.env.SUDO_USER !== process.env.USER)) {
 	updateNotifier({
-		pkg: _package
+		pkg
 	}).notify();
 }
 
