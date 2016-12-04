@@ -8,7 +8,7 @@ const pkg = readPkg.sync(resolve(__dirname, '..'))
 const expectedVersion = pkg.buildNumber === 0 ? pkg.version : `${pkg.version}-Δ${pkg.buildNumber}`
 
 test.cb(`Module name/version is '${pkg.name} v${expectedVersion}'.`, t => {
-	shell.exec('../bin/termng -vv', {
+	shell.exec('./bin/termng -vv', {
 		silent: true
 	}, (code_, out_) => {
 		t.is(code_, 0)
@@ -18,7 +18,7 @@ test.cb(`Module name/version is '${pkg.name} v${expectedVersion}'.`, t => {
 })
 
 test.cb('No Color: has-color', t => {
-	shell.exec('../bin/termng --no-color has-color', {
+	shell.exec('./bin/termng --no-color has-color', {
 		silent: true
 	}, code_ => {
 		t.is(code_, 1)
@@ -26,7 +26,7 @@ test.cb('No Color: has-color', t => {
 	})
 })
 test.cb('No Color: has-256', t => {
-	shell.exec('../bin/termng --no-color has-256', {
+	shell.exec('./bin/termng --no-color has-256', {
 		silent: true
 	}, code_ => {
 		t.is(code_, 1)
@@ -34,7 +34,7 @@ test.cb('No Color: has-256', t => {
 	})
 })
 test.cb('No Color: has-16m', t => {
-	shell.exec('../bin/termng --no-color has-16m', {
+	shell.exec('./bin/termng --no-color has-16m', {
 		silent: true
 	}, code_ => {
 		t.is(code_, 1)
@@ -43,7 +43,7 @@ test.cb('No Color: has-16m', t => {
 })
 
 test.cb('256 Color: has-color', t => {
-	shell.exec('../bin/termng --color=256 has-color', {
+	shell.exec('./bin/termng --color=256 has-color', {
 		silent: true
 	}, code_ => {
 		t.is(code_, 0)
@@ -51,7 +51,7 @@ test.cb('256 Color: has-color', t => {
 	})
 })
 test.cb('256 Color: has-256', t => {
-	shell.exec('../bin/termng --color=256 has-256', {
+	shell.exec('./bin/termng --color=256 has-256', {
 		silent: true
 	}, code_ => {
 		t.is(code_, 0)
@@ -59,7 +59,7 @@ test.cb('256 Color: has-256', t => {
 	})
 })
 test.cb('256 Color: has-16m', t => {
-	shell.exec('../bin/termng --color=256 has-16m', {
+	shell.exec('./bin/termng --color=256 has-16m', {
 		silent: true
 	}, code_ => {
 		t.is(code_, 1)
