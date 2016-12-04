@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>term-ng 0.7.7 | Documentation</title>
+  <title>term-ng 0.7.8 | Documentation</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link href="assets/css/ace.min.css" rel="stylesheet">
   <link href="assets/fonts/TypoPRO-Hack/TypoPRO-Hack.css" type="text/css" rel="stylesheet" />
@@ -13,7 +13,7 @@
   <div class="flex">
     <div class="flex-column fixed top-0 bottom-0 px2 pt2 max-height-100 sidebar">
       <h3 class="m0 no-anchor">term-ng</h3>
-      <div class="mb1"><code>v0.7.7</code></div>
+      <div class="mb1"><code>v0.7.8</code></div>
       <input
         placeholder="Filter"
         id="filter-input"
@@ -150,8 +150,7 @@
 	
 	
 		<h4>Installation</h4>
-<pre><code class="language-javascript">console.log('shell', 'npm install --save term-ng')
-</code></pre>
+<pre class='hljs'><span class="hljs-built_in">console</span>.log(<span class="hljs-string">'shell'</span>, <span class="hljs-string">'npm install --save term-ng'</span>)</pre>
 
 	
 </section>
@@ -164,8 +163,8 @@
 		CLI
 	</h3>
 	
-		<pre><code class="language-shell">  > npm install --global term-ng
-  > term-ng --help
+		<pre class='hljs'>  &gt; npm install --global term-ng
+  &gt; term-ng --help
 
   term-ng v0.6.3
 
@@ -194,11 +193,10 @@
 
   Options:
   -h, --help     Display this help.
-  -v, --version  Return the current version on stdout. -vv Return name &#x26; version.
+  -v, --version  Return the current version on stdout. -vv Return name &amp; version.
   --color        Force color depth --color=256|16m. Disable with --no-color
 
-  © 2016 The Bespoke Pixel. Released under the MIT License.
-</code></pre>
+  © 2016 The Bespoke Pixel. Released under the MIT License.</pre>
 
 	
 	
@@ -223,12 +221,11 @@ I build a new terminal type <code>xterm-256color+iterm3</code>, and change the
 Terminal type preference in iTerm to the same, setting the $TERM
 environment variable.</p>
 <p>The new terminfo entries are built thusly...</p>
-<pre><code class="language-shell">cd term-ng/terminfo
-curl http:                                                        
+<pre class='hljs'>cd term-ng/terminfo
+curl http://invisible-island.net/datafiles/current/terminfo.src.gz
 gunzip terminfo.src.gz
 tic -xrs -e xterm-256color terminfo.src
-tic -xsv3 iTerm.ti
-</code></pre>
+tic -xsv3 iTerm.ti</pre>
 <p>This create a new, updated xterm-256color and then extends it for iTerm.
 This is non-destructive as it creates new entries at <code>~/.terminfo/</code>.
 Simply delete this directory to return the terminfo databases back to the
@@ -267,7 +264,7 @@ session profile defined to use when brewing.</p>
       termNG  
     </h3>
     
-      <a class="pl3 pr1 right rounded github" href="https://github.com/MarkGriffiths/term-ng/blob/c8f4be551940272e8f55527bcdbea15a60ee53a3/src/index.js#L103-L162">src/index.js</a>
+      <a class="pl3 pr1 right rounded github" href="https://github.com/MarkGriffiths/term-ng/blob/b4911e24f2e02ffac2203415bc14d8efec961299/src/index.js#L103-L162">src/index.js</a>
     
   </div>
   
