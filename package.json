@@ -64,7 +64,7 @@
     "read-pkg": "^2.0.0",
     "trucolor": "^0.6.6",
     "truwrap": "^0.7.4",
-    "update-notifier": "^1.0.2",
+    "update-notifier": "^2.0.0",
     "yargs": "^6.3.0"
   },
   "xo": {
