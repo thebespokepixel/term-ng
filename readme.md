@@ -1,5 +1,7 @@
 # term-ng
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/MarkGriffiths/term-ng.svg)](https://greenkeeper.io/)
+
 > Enables enhanced node.js/fish-shell/XTerm/iTerm3 feature integration.
 
 ##### Status
