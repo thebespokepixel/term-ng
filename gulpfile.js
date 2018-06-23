@@ -64,34 +64,3 @@ gulp.task('cli', () =>
 )
 
 gulp.task('default', gulp.series('cjs', 'es6', 'cli'))
-
-/*
-Old cordial
-
-const cordial = require('@thebespokepixel/cordial')()
-
-// transpilation/formatting
-gulp.task('bundle', cordial.macro({
-	source: 'src/index.js'
-}).basic())
-
-gulp.task('master', cordial.macro({
-	master: true,
-	source: 'src/index.js'
-}).basic())
-
-// Binary output
-gulp.task('cli', gulp.series(
-	cordial.transpile({
-		source: 'src/cli.js'
-	}).rollup.babel({
-		banner: '#! /usr/bin/env node',
-		dest: 'bin/termng'
-	}),
-
-	cordial.shell().permissions({
-		mode: '755',
-		dest: 'bin/termng'
-	})
-))
-*/
