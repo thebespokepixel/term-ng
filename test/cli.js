@@ -5,7 +5,7 @@ import readPkg from 'read-pkg'
 
 const pkg = readPkg.sync(resolve(__dirname, '..'))
 
-const expectedVersion = pkg.buildNumber === 0 ? pkg.version : `${pkg.version}-Δ${pkg.buildNumber}`
+const expectedVersion = pkg.version
 
 test.cb(`Module name/version is '${pkg.name} v${expectedVersion}'.`, t => {
 	shell.exec('./bin/termng -vv', {
