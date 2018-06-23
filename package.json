@@ -74,10 +74,9 @@
     "esnext": true,
     "ignores": [
       "index.js",
-      "index-es.js",
-      "lib/**/*.js",
-      "bin/*.js",
-      "docs/**",
+      "index.mjs",
+      "bin",
+      "docs",
       "src/docs/example.js"
     ]
   },
