@@ -13,7 +13,7 @@
 
 ##### Help
 
-[![Inch](https://inch-ci.org/github/MarkGriffiths/term-ng.svg?branch=master&style=shields)](https://inch-ci.org/github/MarkGriffiths/term-ng "Inch") [![Gitter](https://img.shields.io/gitter/room/MarkGriffiths/help.svg?style=flat)](https://gitter.im/MarkGriffiths/help?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge "Gitter")   
+[![Inch](https://inch-ci.org/github/MarkGriffiths/term-ng.svg?branch=master&style=shields)](https://inch-ci.org/github/MarkGriffiths/term-ng "Inch") [![Gitter](https://img.shields.io/gitter/room/MarkGriffiths/help.svg?style=flat)](https://gitter.im/MarkGriffiths/help?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge "Gitter") [![Greenkeeper badge](https://badges.greenkeeper.io/MarkGriffiths/term-ng.svg)](https://greenkeeper.io/)   
 
 
 ## TermNG (Next Generation)
