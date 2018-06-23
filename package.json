@@ -49,23 +49,23 @@
   "homepage": "https://github.com/MarkGriffiths/term-ng#readme",
   "devDependencies": {
     "@thebespokepixel/cordial": "^0.17.11",
-    "ava": "^0.17.0",
-    "codeclimate-test-reporter": "^0.4.0",
-    "documentation": "^4.0.0-beta11",
+    "ava": "^0.25.0",
+    "codeclimate-test-reporter": "^0.5.0",
+    "documentation": "^8.0.0",
     "documentation-theme-bespoke": "^0.3.4",
     "gulp": "github:gulpjs/gulp#4.0",
-    "nyc": "^10.0.0",
-    "shelljs": "^0.7.4",
-    "xo": "^0.17.0"
+    "nyc": "^12.0.2",
+    "shelljs": "^0.8.2",
+    "xo": "^0.21.1"
   },
   "dependencies": {
-    "@thebespokepixel/meta": "^0.1.13",
+    "@thebespokepixel/meta": "^0.2.2",
     "deep-assign": "^2.0.0",
-    "read-pkg": "^2.0.0",
+    "read-pkg": "^3.0.0",
     "trucolor": "^0.6.6",
     "truwrap": "^0.7.4",
-    "update-notifier": "^1.0.2",
-    "yargs": "^6.3.0"
+    "update-notifier": "^2.5.0",
+    "yargs": "^11.0.0"
   },
   "xo": {
     "semicolon": false,
