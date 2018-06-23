@@ -10,7 +10,7 @@ import yargs from 'yargs'
 import meta from '@thebespokepixel/meta'
 import updateNotifier from 'update-notifier'
 import readPkg from 'read-pkg'
-import termNG from '.'
+import termNG from './main'
 
 const pkg = readPkg.sync(resolve(__dirname, '..'))
 const clr = simple({format: 'sgr'})
@@ -23,6 +23,8 @@ const renderer = truwrap({
 
 const _yargs = yargs
 	.strict()
+	.help(false)
+	.version(false)
 	.options({
 		h: {
 			alias: 'help',
@@ -47,7 +49,8 @@ const _yargs = yargs
 	.command('is-enhanced', 'Is the current terminal using an enhanced termcap? (set $TERM_ENHANCED=enabled)')
 	.command('user-agent', 'Print the current terminal software')
 	.wrap(renderer.getWidth())
-const argv = _yargs.argv
+
+const {argv} = yargs
 
 const usage = `
 ${clr.title}term-ng${clr.title.out} ${clr.dim}v${pkg.version}${clr.dim.out}

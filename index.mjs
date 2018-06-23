@@ -1,5 +1,3 @@
-'use strict';
-
 /* ────────╮
  │ Term-NG │ Next generation terminal detector
  ╰─────────┴─────────────────────────────────────────────────────────────────── */
@@ -159,4 +157,4 @@ const termNG = {
   software: process.env.TERM_PROGRAM || process.env.TERMKIT_HOST_APP || process.env.TERM || process.env.GULP
 };
 
-module.exports = termNG;
+export default termNG;
