@@ -3,13 +3,13 @@
   "version": "0.7.9",
   "description": "Terminal/$TERM feature snooping and whitelisting",
   "main": "index.js",
-  "jsnext:main": "index-es.js",
+  "module": "index.mjs",
   "bin": {
     "termng": "./bin/termng"
   },
   "files": [
     "index.js",
-    "index-es.js",
+    "index.mjs",
     "bin"
   ],
   "scripts": {
@@ -17,9 +17,7 @@
     "doc-serve": "documentation serve --watch --theme node_modules/documentation-theme-bespoke --github --config src/docs/documentation.yml --name $npm_package_name  --project-version $npm_package_version src/index.js",
     "doc-build": "documentation build --format html --output docs --theme node_modules/documentation-theme-bespoke --github --config src/docs/documentation.yml --name $npm_package_name  --project-version $npm_package_version src/index.js",
     "readme": "compile-readme -u src/docs/example.md src/docs/readme.md > readme.md",
-    "code-climate": "nyc report --reporter=text-lcov | codeclimate-test-reporter",
     "coverage": "nyc ava && nyc report --reporter=lcov --report-dir test/coverage; open test/coverage/lcov-report/index.html",
-    "clean": "gulp clean",
     "colors": "scripts/colortest.pl"
   },
   "repository": {
@@ -42,6 +40,10 @@
     "xterm"
   ],
   "author": "Mark Griffiths <mark@thebespokepixel.com> (http://thebespokepixel.com/)",
+  "copyright": {
+    "year": "2018",
+    "owner": "The Bespoke Pixel"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/MarkGriffiths/term-ng/issues"
@@ -72,8 +74,7 @@
     "esnext": true,
     "ignores": [
       "index.js",
-      "index-es.js",
-      "lib/**/*.js",
+      "index.mjs",
       "bin/*.js",
       "docs/**",
       "src/docs/example.js"
@@ -137,6 +138,5 @@
         "david"
       ]
     ]
-  },
-  "buildNumber": 0
+  }
 }
