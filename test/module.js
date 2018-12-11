@@ -1,7 +1,7 @@
 import test from 'ava'
 import termNG from '..'
 
-test(`Module returns an object with correct properties.`, t => {
+test('Module returns an object with correct properties.', t => {
 	t.plan(6)
 	t.true({}.hasOwnProperty.call(termNG, 'color'), 'color property missing')
 	t.true({}.hasOwnProperty.call(termNG, 'images'), 'images property missing')
@@ -11,7 +11,7 @@ test(`Module returns an object with correct properties.`, t => {
 	t.true({}.hasOwnProperty.call(termNG, 'software'), 'software property missing')
 })
 
-test(`Module color property`, t => {
+test('Module color property', t => {
 	t.plan(4)
 	t.true({}.hasOwnProperty.call(termNG.color, 'basic'), 'basic property missing')
 	t.true({}.hasOwnProperty.call(termNG.color, 'level'), 'level property missing')
@@ -19,19 +19,19 @@ test(`Module color property`, t => {
 	t.true({}.hasOwnProperty.call(termNG.color, 'has16m'), 'has16m property missing')
 })
 
-test(`Module font property`, t => {
+test('Module font property', t => {
 	t.plan(2)
 	t.true({}.hasOwnProperty.call(termNG.font, 'basic'), 'basic property missing')
 	t.true({}.hasOwnProperty.call(termNG.font, 'enhanced'), 'enhanced property missing')
 })
 
-test(`Module termcap property`, t => {
+test('Module termcap property', t => {
 	t.plan(2)
 	t.true({}.hasOwnProperty.call(termNG.termcap, 'basic'), 'basic property missing')
 	t.true({}.hasOwnProperty.call(termNG.termcap, 'enhanced'), 'enhanced property missing')
 })
 
-test(`Module property types`, t => {
+test('Module property types', t => {
 	t.plan(11)
 	t.is(typeof termNG.color.basic, 'boolean', 'color.basic incorrect type')
 	t.is(typeof termNG.color.level, 'number', 'color.basic incorrect type')
