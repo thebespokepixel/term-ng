@@ -10,7 +10,7 @@ var meta = _interopDefault(require('@thebespokepixel/meta'));
 var updateNotifier = _interopDefault(require('update-notifier'));
 
 const name = "term-ng";
-const version = "0.8.2";
+const version = "0.8.5";
 const description = "Terminal/$TERM feature snooping and whitelisting";
 const main = "index.js";
 const module$1 = "index.mjs";
@@ -24,8 +24,8 @@ const files = [
 ];
 const scripts = {
 	test: "xo && nyc ava",
-	"doc-serve": "documentation serve --watch --theme node_modules/documentation-theme-bespoke --github --config src/docs/documentation.yml --name $npm_package_name  --project-version $npm_package_version src/index.js",
-	"doc-build": "documentation build --format html --output docs --theme node_modules/documentation-theme-bespoke --github --config src/docs/documentation.yml --name $npm_package_name  --project-version $npm_package_version src/index.js",
+	"doc-serve": "documentation serve --watch --theme node_modules/documentation-theme-bespoke --github --config src/docs/documentation.yml --project-name $npm_package_name  --project-version $npm_package_version src/index.js",
+	"doc-build": "documentation build --format html --output docs --theme node_modules/documentation-theme-bespoke --github --config src/docs/documentation.yml --project-name $npm_package_name  --project-version $npm_package_version src/index.js",
 	readme: "compile-readme -u src/docs/example.md src/docs/readme.md > readme.md",
 	coverage: "nyc ava && nyc report --reporter=lcov --report-dir test/coverage; open test/coverage/lcov-report/index.html",
 	colors: "scripts/colortest.pl"
@@ -51,7 +51,7 @@ const keywords = [
 ];
 const author = "Mark Griffiths <mark@thebespokepixel.com> (http://thebespokepixel.com/)";
 const copyright = {
-	year: "2018",
+	year: "2019",
 	owner: "The Bespoke Pixel"
 };
 const license = "MIT";
@@ -66,7 +66,7 @@ const devDependencies = {
 	ava: "^1.2.1",
 	"babel-plugin-lodash": "^3.3.4",
 	documentation: "^9.1.1",
-	"documentation-theme-bespoke": "^0.4.4",
+	"documentation-theme-bespoke": "^0.4.8",
 	gulp: "^4.0.0",
 	"gulp-better-rollup": "^3.4.0",
 	"gulp-chmod": "^2.0.0",
@@ -77,16 +77,15 @@ const devDependencies = {
 	"rollup-plugin-commonjs": "^9.2.0",
 	"rollup-plugin-json": "^3.1.0",
 	"rollup-plugin-node-resolve": "^4.0.0",
-	shelljs: "^0.8.3",
 	xo: "^0.24.0"
 };
 const dependencies = {
 	"@thebespokepixel/meta": "^0.2.4",
 	"read-pkg": "^4.0.1",
-	trucolor: "^0.7.2",
-	truwrap: "^0.8.2",
+	trucolor: "^0.7.4",
+	truwrap: "^0.8.3",
 	"update-notifier": "^2.5.0",
-	yargs: "^11.0.0"
+	yargs: "^13.1.0"
 };
 const xo = {
 	semicolon: false,
@@ -108,6 +107,7 @@ const ava = {
 const badges = {
 	github: "MarkGriffiths",
 	npm: "thebespokepixel",
+	codeclimate: "4194203c94ee1d102fc5",
 	name: "term-ng",
 	providers: {
 		status: {
@@ -136,6 +136,7 @@ const badges = {
 			]
 		],
 		Developer: [
+			"greenkeeper",
 			"david-dev",
 			"rollup"
 		],
