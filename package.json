@@ -14,8 +14,8 @@
   ],
   "scripts": {
     "test": "xo && nyc ava",
-    "doc-serve": "documentation serve --watch --theme node_modules/documentation-theme-bespoke --github --config src/docs/documentation.yml --name $npm_package_name  --project-version $npm_package_version src/index.js",
-    "doc-build": "documentation build --format html --output docs --theme node_modules/documentation-theme-bespoke --github --config src/docs/documentation.yml --name $npm_package_name  --project-version $npm_package_version src/index.js",
+    "doc-serve": "documentation serve --watch --theme node_modules/documentation-theme-bespoke --github --config src/docs/documentation.yml --project-name $npm_package_name  --project-version $npm_package_version src/index.js",
+    "doc-build": "documentation build --format html --output docs --theme node_modules/documentation-theme-bespoke --github --config src/docs/documentation.yml --project-name $npm_package_name  --project-version $npm_package_version src/index.js",
     "readme": "compile-readme -u src/docs/example.md src/docs/readme.md > readme.md",
     "coverage": "nyc ava && nyc report --reporter=lcov --report-dir test/coverage; open test/coverage/lcov-report/index.html",
     "colors": "scripts/colortest.pl"
@@ -97,6 +97,7 @@
   "badges": {
     "github": "MarkGriffiths",
     "npm": "thebespokepixel",
+    "codeclimate": "4194203c94ee1d102fc5",
     "name": "term-ng",
     "providers": {
       "status": {
@@ -125,6 +126,7 @@
         ]
       ],
       "Developer": [
+        "greenkeeper",
         "david-dev",
         "rollup"
       ],
