@@ -3,35 +3,199 @@
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
-var path = require('path');
 var trucolor = require('trucolor');
 var truwrap = require('truwrap');
 var yargs = _interopDefault(require('yargs'));
 var meta = _interopDefault(require('@thebespokepixel/meta'));
 var updateNotifier = _interopDefault(require('update-notifier'));
-var readPkg = _interopDefault(require('read-pkg'));
 
-/* ────────╮
- │ Term-NG │ Next generation terminal detector
- ╰─────────┴─────────────────────────────────────────────────────────────────── */
+const name = "term-ng";
+const version = "0.8.2";
+const description = "Terminal/$TERM feature snooping and whitelisting";
+const main = "index.js";
+const module$1 = "index.mjs";
+const bin = {
+	termng: "./bin/termng"
+};
+const files = [
+	"index.js",
+	"index.mjs",
+	"bin"
+];
+const scripts = {
+	test: "xo && nyc ava",
+	"doc-serve": "documentation serve --watch --theme node_modules/documentation-theme-bespoke --github --config src/docs/documentation.yml --name $npm_package_name  --project-version $npm_package_version src/index.js",
+	"doc-build": "documentation build --format html --output docs --theme node_modules/documentation-theme-bespoke --github --config src/docs/documentation.yml --name $npm_package_name  --project-version $npm_package_version src/index.js",
+	readme: "compile-readme -u src/docs/example.md src/docs/readme.md > readme.md",
+	coverage: "nyc ava && nyc report --reporter=lcov --report-dir test/coverage; open test/coverage/lcov-report/index.html",
+	colors: "scripts/colortest.pl"
+};
+const repository = {
+	type: "git",
+	url: "https://github.com/MarkGriffiths/term-ng.git"
+};
+const engines = {
+	node: ">=8.0"
+};
+const keywords = [
+	"24bit",
+	"color",
+	"ansi",
+	"truecolor",
+	"trucolor",
+	"sgr",
+	"cli",
+	"tty",
+	"iterm",
+	"xterm"
+];
+const author = "Mark Griffiths <mark@thebespokepixel.com> (http://thebespokepixel.com/)";
+const copyright = {
+	year: "2018",
+	owner: "The Bespoke Pixel"
+};
+const license = "MIT";
+const bugs = {
+	url: "https://github.com/MarkGriffiths/term-ng/issues"
+};
+const homepage = "https://github.com/MarkGriffiths/term-ng#readme";
+const devDependencies = {
+	"@babel/core": "^7.2.2",
+	"@babel/preset-env": "^7.3.1",
+	acorn: "^6.1.0",
+	ava: "^1.2.1",
+	"babel-plugin-lodash": "^3.3.4",
+	documentation: "^9.1.1",
+	"documentation-theme-bespoke": "^0.4.4",
+	gulp: "^4.0.0",
+	"gulp-better-rollup": "^3.4.0",
+	"gulp-chmod": "^2.0.0",
+	"gulp-rename": "^1.3.0",
+	"gulp-strip-comments": "^2.5.2",
+	nyc: "^12.0.2",
+	"rollup-plugin-babel": "^4.3.2",
+	"rollup-plugin-commonjs": "^9.2.0",
+	"rollup-plugin-json": "^3.1.0",
+	"rollup-plugin-node-resolve": "^4.0.0",
+	shelljs: "^0.8.3",
+	xo: "^0.24.0"
+};
+const dependencies = {
+	"@thebespokepixel/meta": "^0.2.4",
+	"read-pkg": "^4.0.1",
+	trucolor: "^0.7.2",
+	truwrap: "^0.8.2",
+	"update-notifier": "^2.5.0",
+	yargs: "^11.0.0"
+};
+const xo = {
+	semicolon: false,
+	esnext: true,
+	ignores: [
+		"index.js",
+		"index.mjs",
+		"bin/*.js",
+		"docs/**",
+		"src/docs/example.js"
+	]
+};
+const ava = {
+	verbose: true,
+	files: [
+		"test/*.js"
+	]
+};
+const badges = {
+	github: "MarkGriffiths",
+	npm: "thebespokepixel",
+	name: "term-ng",
+	providers: {
+		status: {
+			text: "beta",
+			color: "blue"
+		},
+		aux1: {
+			title: "github",
+			text: "source",
+			color: "4E73B6",
+			link: "https://github.com/MarkGriffiths/term-ng"
+		}
+	},
+	readme: {
+		Status: [
+			[
+				"status",
+				"npm",
+				"travis",
+				"david"
+			],
+			[
+				"code-climate",
+				"code-climate-coverage",
+				"snyk"
+			]
+		],
+		Developer: [
+			"david-dev",
+			"rollup"
+		],
+		Help: [
+			"inch",
+			"gitter"
+		]
+	},
+	docs: [
+		[
+			"aux1",
+			"travis"
+		],
+		[
+			"code-climate",
+			"code-climate-coverage"
+		],
+		[
+			"david"
+		]
+	]
+};
+var pkg = {
+	name: name,
+	version: version,
+	description: description,
+	main: main,
+	module: module$1,
+	bin: bin,
+	files: files,
+	scripts: scripts,
+	repository: repository,
+	engines: engines,
+	keywords: keywords,
+	author: author,
+	copyright: copyright,
+	license: license,
+	bugs: bugs,
+	homepage: homepage,
+	devDependencies: devDependencies,
+	dependencies: dependencies,
+	xo: xo,
+	ava: ava,
+	badges: badges
+};
 
-/* eslint complexity:0 */
 const itermSession = process.env.ITERM_SESSION_ID && process.env.ITERM_SESSION_ID.indexOf(':') > 0;
 const termColor = process.env.TERM_COLOR && process.env.TERM_COLOR.indexOf('16m') >= 0;
 const has16m = itermSession || termColor;
 
 if (has16m && !/-color/.test(process.argv.join(''))) {
   process.argv.splice(2, 0, '--color=16m');
-} // From https://github.com/sindresorhus/has-flag, under MIT license
-
+}
 
 const hasFlag = flag => {
   const terminatorPos = process.argv.indexOf('--');
   const prefix = /^-{1,2}/.test(flag) ? '' : '--';
   const pos = process.argv.indexOf(prefix + flag);
   return pos !== -1 && (terminatorPos === -1 ? true : pos < terminatorPos);
-}; // From https://github.com/chalk/supports-color, under MIT license
-
+};
 
 const support = level => {
   if (level === 0) {
@@ -99,20 +263,7 @@ if (supportLevel === 0 && 'FORCE_COLOR' in process.env) {
 }
 
 const supportsColor = process && support(supportLevel);
-/**
- * Terminal features.
- * @namespace
- */
-
 const termNG = {
-  /**
-   * Supported terminal color depth.
-   * @type {Object}
-   * @property {Number} level  - 0 = None, 1 = Basic, 2 = 256 colors, 3 = 24 bit color
-   * @property {Boolean} basic - Is there basic color support?
-   * @property {Boolean} has256 - Terminal supports 256 colors
-   * @property {Boolean} has16m - Terminal supports 16 million (24 bit) color
-   */
   color: {
     level: supportsColor.level || 0,
     basic: supportsColor.hasBasic || false,
@@ -120,60 +271,19 @@ const termNG = {
     has256: supportsColor.level >= 2,
     has16m: supportsColor.level >= 3
   },
-
-  /**
-   * Does the terminal support inline images?
-   * @type {Boolean}
-   * @example <caption>To set:</caption>
-   * env TERM_IMAGES=enabled
-   */
   images: process.env.TERM_IMAGES !== undefined && supportsColor.level >= 2,
-
-  /**
-   * Does the terminal support audio?
-   * @type {Boolean}
-   * @example <caption>To set:</caption>
-   * env TERM_AUDIO=enabled
-   */
   audio: process.env.TERM_AUDIO !== undefined,
-
-  /**
-   * Terminal font character set.
-   * @type {Object}
-   * @property {Boolean} basic    - Font has basic box drawing symbols.
-   * @property {Boolean} enhanced - Font has 'full' Unicode character support
-   * @example <caption>To set:</caption>
-   * env TERM_FONT=[box|full]
-   */
   font: {
     basic: process.env.TERM_FONT !== undefined,
     enhanced: process.env.TERM_FONT === 'full'
   },
-
-  /**
-   * Termcap support
-   * @type {Object}
-   * @property {Boolean} basic    - Using the default termcap.
-   * @property {Boolean} enhanced - Using an enhanced/custom termcap.
-   * @example <caption>To set:</caption>
-   * env TERM_ENHANCED=enabled
-   */
   termcap: {
     basic: process.env.TERM_ENHANCED !== undefined && process.env.TERM_ENHANCED === 'disabled',
     enhanced: process.env.TERM_ENHANCED === 'enabled'
   },
-
-  /**
-   * Name of running terminal software, i.e. 'iTerm.app'
-   * @type {String}
-   */
   software: process.env.TERM_PROGRAM || process.env.TERMKIT_HOST_APP || process.env.TERM || process.env.GULP
 };
 
-/* ────────╮
- │ Term-NG │ Next Generation Terminal Feature Exposure/Whitelisting
- ╰─────────┴──────────────────────────────────────────────────────────────────── */
-const pkg = readPkg.sync(path.resolve(__dirname, '..'));
 const clr = trucolor.simple({
   format: 'sgr'
 });

@@ -3,16 +3,14 @@
  ╰─────────┴──────────────────────────────────────────────────────────────────── */
 /* eslint unicorn/no-process-exit:0 */
 
-import {resolve} from 'path'
 import {simple} from 'trucolor'
 import {truwrap} from 'truwrap'
 import yargs from 'yargs'
 import meta from '@thebespokepixel/meta'
 import updateNotifier from 'update-notifier'
-import readPkg from 'read-pkg'
-import termNG from './main'
+import pkg from '../package'
+import termNG from '.'
 
-const pkg = readPkg.sync(resolve(__dirname, '..'))
 const clr = simple({format: 'sgr'})
 const metadata = meta(__dirname)
 

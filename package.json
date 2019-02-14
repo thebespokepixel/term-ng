@@ -1,6 +1,6 @@
 {
   "name": "term-ng",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "description": "Terminal/$TERM feature snooping and whitelisting",
   "main": "index.js",
   "module": "index.mjs",
@@ -14,8 +14,8 @@
   ],
   "scripts": {
     "test": "xo && nyc ava",
-    "doc-serve": "documentation serve --watch --theme node_modules/documentation-theme-bespoke --github --config src/docs/documentation.yml --name $npm_package_name  --project-version $npm_package_version src/index.js",
-    "doc-build": "documentation build --format html --output docs --theme node_modules/documentation-theme-bespoke --github --config src/docs/documentation.yml --name $npm_package_name  --project-version $npm_package_version src/index.js",
+    "doc-serve": "documentation serve --watch --theme node_modules/documentation-theme-bespoke --github --config src/docs/documentation.yml --project-name $npm_package_name  --project-version $npm_package_version src/index.js",
+    "doc-build": "documentation build --format html --output docs --theme node_modules/documentation-theme-bespoke --github --config src/docs/documentation.yml --project-name $npm_package_name  --project-version $npm_package_version src/index.js",
     "readme": "compile-readme -u src/docs/example.md src/docs/readme.md > readme.md",
     "coverage": "nyc ava && nyc report --reporter=lcov --report-dir test/coverage; open test/coverage/lcov-report/index.html",
     "colors": "scripts/colortest.pl"
@@ -41,7 +41,7 @@
   ],
   "author": "Mark Griffiths <mark@thebespokepixel.com> (http://thebespokepixel.com/)",
   "copyright": {
-    "year": "2018",
+    "year": "2019",
     "owner": "The Bespoke Pixel"
   },
   "license": "MIT",
@@ -50,24 +50,27 @@
   },
   "homepage": "https://github.com/MarkGriffiths/term-ng#readme",
   "devDependencies": {
-    "@babel/core": "^7.2.0",
-    "@babel/preset-env": "^7.2.0",
-    "ava": "^0.25.0",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "acorn": "^6.1.0",
+    "ava": "^1.2.1",
     "babel-plugin-lodash": "^3.3.4",
-    "documentation": "^9.0.0",
-    "documentation-theme-bespoke": "^0.4.3",
+    "documentation": "^9.1.1",
+    "documentation-theme-bespoke": "^0.4.4",
     "gulp": "^4.0.0",
     "gulp-better-rollup": "^3.4.0",
     "gulp-chmod": "^2.0.0",
     "gulp-rename": "^1.3.0",
     "gulp-strip-comments": "^2.5.2",
     "nyc": "^12.0.2",
-    "rollup-plugin-babel": "^4.0.3",
-    "shelljs": "^0.8.3",
-    "xo": "^0.23.0"
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-json": "^3.1.0",
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "xo": "^0.24.0"
   },
   "dependencies": {
-    "@thebespokepixel/meta": "^0.2.2",
+    "@thebespokepixel/meta": "^0.2.4",
     "read-pkg": "^4.0.1",
     "trucolor": "^0.7.2",
     "truwrap": "^0.8.2",
@@ -94,6 +97,7 @@
   "badges": {
     "github": "MarkGriffiths",
     "npm": "thebespokepixel",
+    "codeclimate": "4194203c94ee1d102fc5",
     "name": "term-ng",
     "providers": {
       "status": {
@@ -122,6 +126,7 @@
         ]
       ],
       "Developer": [
+        "greenkeeper",
         "david-dev",
         "rollup"
       ],
