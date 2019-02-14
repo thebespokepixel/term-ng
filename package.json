@@ -1,6 +1,6 @@
 {
   "name": "term-ng",
-  "version": "0.8.3",
+  "version": "0.8.4",
   "description": "Terminal/$TERM feature snooping and whitelisting",
   "main": "index.js",
   "module": "index.mjs",
@@ -75,7 +75,7 @@
     "trucolor": "^0.7.2",
     "truwrap": "^0.8.2",
     "update-notifier": "^2.5.0",
-    "yargs": "^11.0.0"
+    "yargs": "^13.1.0"
   },
   "xo": {
     "semicolon": false,
