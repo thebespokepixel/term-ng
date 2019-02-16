@@ -100,10 +100,6 @@
     "codeclimate": "4194203c94ee1d102fc5",
     "name": "term-ng",
     "providers": {
-      "status": {
-        "text": "beta",
-        "color": "blue"
-      },
       "aux1": {
         "title": "github",
         "text": "source",
@@ -114,7 +110,6 @@
     "readme": {
       "Status": [
         [
-          "status",
           "npm",
           "travis",
           "david"
