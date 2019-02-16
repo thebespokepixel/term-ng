@@ -1,6 +1,6 @@
 {
   "name": "term-ng",
-  "version": "0.8.5",
+  "version": "1.0.0",
   "description": "Terminal/$TERM feature snooping and whitelisting",
   "main": "index.js",
   "module": "index.mjs",
@@ -50,19 +50,19 @@
   },
   "homepage": "https://github.com/MarkGriffiths/term-ng#readme",
   "devDependencies": {
-    "@babel/core": "^7.2.2",
+    "@babel/core": "^7.3.3",
     "@babel/preset-env": "^7.3.1",
     "acorn": "^6.1.0",
     "ava": "^1.2.1",
     "babel-plugin-lodash": "^3.3.4",
     "documentation": "^9.1.1",
-    "documentation-theme-bespoke": "^0.4.8",
+    "documentation-theme-bespoke": "^0.4.10",
     "gulp": "^4.0.0",
     "gulp-better-rollup": "^3.4.0",
     "gulp-chmod": "^2.0.0",
     "gulp-rename": "^1.3.0",
     "gulp-strip-comments": "^2.5.2",
-    "nyc": "^12.0.2",
+    "nyc": "^13.3.0",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-commonjs": "^9.2.0",
     "rollup-plugin-json": "^3.1.0",
@@ -70,12 +70,12 @@
     "xo": "^0.24.0"
   },
   "dependencies": {
-    "@thebespokepixel/meta": "^0.2.4",
+    "@thebespokepixel/meta": "^1.0.0",
     "read-pkg": "^4.0.1",
-    "trucolor": "^0.7.4",
-    "truwrap": "^0.8.3",
+    "trucolor": "^0.7.5",
+    "truwrap": "^0.8.4",
     "update-notifier": "^2.5.0",
-    "yargs": "^13.1.0"
+    "yargs": "^13.2.0"
   },
   "xo": {
     "semicolon": false,
@@ -100,10 +100,6 @@
     "codeclimate": "4194203c94ee1d102fc5",
     "name": "term-ng",
     "providers": {
-      "status": {
-        "text": "beta",
-        "color": "blue"
-      },
       "aux1": {
         "title": "github",
         "text": "source",
@@ -114,7 +110,6 @@
     "readme": {
       "Status": [
         [
-          "status",
           "npm",
           "travis",
           "david"
