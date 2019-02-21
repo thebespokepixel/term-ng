@@ -1,6 +1,6 @@
 {
   "name": "term-ng",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Terminal/$TERM feature snooping and whitelisting",
   "main": "index.js",
   "module": "index.mjs",
@@ -70,12 +70,12 @@
     "xo": "^0.24.0"
   },
   "dependencies": {
-    "@thebespokepixel/meta": "^1.0.0",
+    "@thebespokepixel/meta": "^1.0.1",
     "read-pkg": "^4.0.1",
     "trucolor": "^1.0.0",
     "truwrap": "^1.0.0",
     "update-notifier": "^2.5.0",
-    "yargs": "^13.2.0"
+    "yargs": "^13.2.1"
   },
   "xo": {
     "semicolon": false,
