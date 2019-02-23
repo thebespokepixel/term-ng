@@ -10,7 +10,7 @@ var meta = _interopDefault(require('@thebespokepixel/meta'));
 var updateNotifier = _interopDefault(require('update-notifier'));
 
 const name = "term-ng";
-const version = "1.0.1";
+const version = "1.0.2";
 const description = "Terminal/$TERM feature snooping and whitelisting";
 const main = "index.js";
 const module$1 = "index.mjs";
@@ -62,11 +62,9 @@ const homepage = "https://github.com/MarkGriffiths/term-ng#readme";
 const devDependencies = {
 	"@babel/core": "^7.3.3",
 	"@babel/preset-env": "^7.3.1",
-	acorn: "^6.1.0",
 	ava: "^1.2.1",
 	"babel-plugin-lodash": "^3.3.4",
-	documentation: "^9.1.1",
-	"documentation-theme-bespoke": "^0.4.11",
+	"documentation-theme-bespoke": "^0.5.2",
 	gulp: "^4.0.0",
 	"gulp-better-rollup": "^3.4.0",
 	"gulp-chmod": "^2.0.0",
@@ -74,16 +72,16 @@ const devDependencies = {
 	"gulp-strip-comments": "^2.5.2",
 	nyc: "^13.3.0",
 	"rollup-plugin-babel": "^4.3.2",
-	"rollup-plugin-commonjs": "^9.2.0",
+	"rollup-plugin-commonjs": "^9.2.1",
 	"rollup-plugin-json": "^3.1.0",
-	"rollup-plugin-node-resolve": "^4.0.0",
+	"rollup-plugin-node-resolve": "^4.0.1",
 	xo: "^0.24.0"
 };
 const dependencies = {
-	"@thebespokepixel/meta": "^1.0.1",
+	"@thebespokepixel/meta": "^1.0.2",
 	"read-pkg": "^4.0.1",
-	trucolor: "^1.0.0",
-	truwrap: "^1.0.0",
+	trucolor: "^1.0.1",
+	truwrap: "^1.0.1",
 	"update-notifier": "^2.5.0",
 	yargs: "^13.2.1"
 };
@@ -172,8 +170,9 @@ var pkg = {
 };
 
 const itermSession = process.env.ITERM_SESSION_ID && process.env.ITERM_SESSION_ID.indexOf(':') > 0;
-const termColor = process.env.TERM_COLOR && process.env.TERM_COLOR.indexOf('16m') >= 0;
-const has16m = itermSession || termColor;
+const colorTermTruecolor = process.env.COLORTERM && process.env.COLORTERM.indexOf('truecolor') >= 0;
+const termColor16m = process.env.TERM_COLOR && process.env.TERM_COLOR.indexOf('16m') >= 0;
+const has16m = itermSession || colorTermTruecolor || termColor16m;
 
 if (has16m && !/-color/.test(process.argv.join(''))) {
   process.argv.splice(2, 0, '--color=16m');
