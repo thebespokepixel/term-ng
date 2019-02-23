@@ -62,11 +62,9 @@ const homepage = "https://github.com/MarkGriffiths/term-ng#readme";
 const devDependencies = {
 	"@babel/core": "^7.3.3",
 	"@babel/preset-env": "^7.3.1",
-	acorn: "^6.1.0",
 	ava: "^1.2.1",
 	"babel-plugin-lodash": "^3.3.4",
-	documentation: "^9.1.1",
-	"documentation-theme-bespoke": "^0.4.11",
+	"documentation-theme-bespoke": "^0.5.2",
 	gulp: "^4.0.0",
 	"gulp-better-rollup": "^3.4.0",
 	"gulp-chmod": "^2.0.0",
@@ -172,8 +170,9 @@ var pkg = {
 };
 
 const itermSession = process.env.ITERM_SESSION_ID && process.env.ITERM_SESSION_ID.indexOf(':') > 0;
-const termColor = process.env.TERM_COLOR && process.env.TERM_COLOR.indexOf('16m') >= 0;
-const has16m = itermSession || termColor;
+const colorTermTruecolor = process.env.COLORTERM && process.env.COLORTERM.indexOf('truecolor') >= 0;
+const termColor16m = process.env.TERM_COLOR && process.env.TERM_COLOR.indexOf('16m') >= 0;
+const has16m = itermSession || colorTermTruecolor || termColor16m;
 
 if (has16m && !/-color/.test(process.argv.join(''))) {
   process.argv.splice(2, 0, '--color=16m');
