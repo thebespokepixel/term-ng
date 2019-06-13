@@ -1,6 +1,3 @@
-/* ─────────────╮
- │ gulp/cordial │
- ╰──────────────┴────────────────────────────────────────────────────────────── */
 const gulp = require('gulp')
 const rename = require('gulp-rename')
 const chmod = require('gulp-chmod')
@@ -10,7 +7,7 @@ const resolve = require('rollup-plugin-node-resolve')
 const commonjs = require('rollup-plugin-commonjs')
 const json = require('rollup-plugin-json')
 
-const external = id => !id.startsWith('.') && !id.startsWith('/') && !id.startsWith('\0')
+const external = id => !id.startsWith('src') && !id.startsWith('.') && !id.startsWith('/') && !id.startsWith('\0')
 
 const babelConfig = {
 	presets: [
