@@ -32,9 +32,9 @@ From inside the package directory, running `npm run-script colors` will generate
 
 ![Color preview][colors]
 
-[colors]: https://raw.githubusercontent.com/MarkGriffiths/term-ng/master/media/colors.png
+[colors]: https://raw.githubusercontent.com/thebespokepixel/term-ng/master/media/colors.png
 
 ## Documentation
-Full documentation can be found at [https://markgriffiths.github.io/term-ng/][1]
+Full documentation can be found at [https://thebespokepixel.github.io/term-ng/][1]
 
-[1]: https://markgriffiths.github.io/term-ng/
+[1]: https://thebespokepixel.github.io/term-ng/
