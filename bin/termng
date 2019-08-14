@@ -10,7 +10,7 @@ var meta = _interopDefault(require('@thebespokepixel/meta'));
 var updateNotifier = _interopDefault(require('update-notifier'));
 
 const name = "term-ng";
-const version = "1.0.4";
+const version = "1.0.5";
 const description = "Terminal/$TERM feature snooping and whitelisting";
 const main = "index.js";
 const module$1 = "index.mjs";
@@ -64,7 +64,7 @@ const devDependencies = {
 	"@babel/preset-env": "^7.5.5",
 	ava: "^2.2.0",
 	"babel-plugin-lodash": "^3.3.4",
-	"documentation-theme-bespoke": "^0.5.6",
+	"documentation-theme-bespoke": "^1.0.0",
 	gulp: "^4.0.2",
 	"gulp-better-rollup": "^4.0.1",
 	"gulp-chmod": "^3.0.0",
@@ -81,8 +81,8 @@ const devDependencies = {
 const dependencies = {
 	"@thebespokepixel/meta": "^1.0.4",
 	"read-pkg": "^5.2.0",
-	trucolor: "^1.0.3",
-	truwrap: "^1.0.3",
+	trucolor: "^1.0.6",
+	truwrap: "^1.0.5",
 	"update-notifier": "^3.0.1",
 	yargs: "^13.3.0"
 };
@@ -111,25 +111,34 @@ const badges = {
 		}
 	},
 	readme: {
-		Status: [
+		"Publishing Status": [
 			[
 				"npm",
-				"travis",
 				"david"
 			],
 			[
-				"code-climate",
-				"code-climate-coverage",
-				"snyk"
+				"travis-com",
+				"rollup"
 			]
 		],
-		Developer: [
-			"greenkeeper",
-			"david-dev",
-			"rollup"
+		"Development Status": [
+			[
+				"greenkeeper",
+				"travis-com-dev"
+			],
+			[
+				"david-dev",
+				"david-devdeps-dev"
+			],
+			[
+				"snyk",
+				"code-climate",
+				"code-climate-coverage"
+			]
 		],
-		Help: [
-			"inch"
+		"Documentation/Help": [
+			"inch",
+			"twitter"
 		]
 	},
 	docs: [
@@ -142,6 +151,7 @@ const badges = {
 			"code-climate-coverage"
 		],
 		[
+			"snyk",
 			"david"
 		]
 	]
