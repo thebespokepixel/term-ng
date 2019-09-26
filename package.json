@@ -66,7 +66,7 @@
     "rollup-plugin-commonjs": "^10.0.2",
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "xo": "^0.24.0"
+    "xo": "^0.25.0"
   },
   "dependencies": {
     "@thebespokepixel/meta": "^1.0.4",
