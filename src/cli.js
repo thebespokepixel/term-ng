@@ -8,7 +8,7 @@ import {truwrap} from 'truwrap'
 import yargs from 'yargs'
 import meta from '@thebespokepixel/meta'
 import updateNotifier from 'update-notifier'
-import pkg from '../package'
+import pkg from '../package.json'
 import termNG from '.'
 
 const clr = simple({format: 'sgr'})
@@ -62,7 +62,7 @@ If user-agent is used, the command will return the string on stdout and exit sta
 ${clr.title}Usage:${clr.title.out}
 ${clr.command}termng ${clr.option}[command]${clr.option.out}`
 
-const epilogue = `${clr.title}© 2016 The Bespoke Pixel. ${clr.grey}Released under the MIT License.${clr.grey.out}`
+const epilogue = `${clr.title}${metadata.copyright}. ${clr.grey}Released under the MIT License.${clr.grey.out}`
 
 if (!(process.env.USER === 'root' && process.env.SUDO_USER !== process.env.USER)) {
 	updateNotifier({
@@ -74,7 +74,7 @@ if (argv.help) {
 	renderer.write(usage)
 	renderer.break(2)
 	renderer.write(_yargs.getUsageInstance().help())
-	renderer.break()
+	renderer.break(2)
 	renderer.write(epilogue)
 	renderer.break(2)
 	process.exit(0)
@@ -85,7 +85,7 @@ if (argv.version) {
 	process.exit(0)
 }
 
-if (argv._.indexOf('user-agent') !== -1) {
+if (argv._.includes('user-agent')) {
 	process.stdout.write(termNG.software)
 	process.exit(0)
 }
