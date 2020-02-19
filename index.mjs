@@ -1,6 +1,6 @@
 const itermSession = process.env.ITERM_SESSION_ID && process.env.ITERM_SESSION_ID.indexOf(':') > 0;
-const colorTermTruecolor = process.env.COLORTERM && process.env.COLORTERM.indexOf('truecolor') >= 0;
-const termColor16m = process.env.TERM_COLOR && process.env.TERM_COLOR.indexOf('16m') >= 0;
+const colorTermTruecolor = process.env.COLORTERM && process.env.COLORTERM.includes('truecolor');
+const termColor16m = process.env.TERM_COLOR && process.env.TERM_COLOR.includes('16m');
 const has16m = itermSession || colorTermTruecolor || termColor16m;
 
 if (has16m && !/-color/.test(process.argv.join(''))) {
