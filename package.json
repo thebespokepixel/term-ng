@@ -72,7 +72,7 @@
   "dependencies": {
     "@thebespokepixel/meta": "^2.0.1",
     "read-pkg": "^5.2.0",
-    "trucolor": "^1.0.6",
+    "trucolor": "^2.0.0",
     "truwrap": "^1.0.5",
     "update-notifier": "^4.1.0",
     "yargs": "^15.1.0"
