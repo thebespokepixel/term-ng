@@ -73,7 +73,7 @@
     "@thebespokepixel/meta": "^2.0.2",
     "read-pkg": "^5.2.0",
     "trucolor": "^2.0.0",
-    "truwrap": "^2.0.0",
+    "truwrap": "^2.0.1",
     "update-notifier": "^4.1.0",
     "yargs": "^15.1.0"
   },
