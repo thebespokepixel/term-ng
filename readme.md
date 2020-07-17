@@ -9,8 +9,7 @@
 
 ##### Development Status
 
-[![Greenkeeper](https://badges.greenkeeper.io/thebespokepixel/term-ng.svg)](https://greenkeeper.io/ "Greenkeeper") [![Travis](https://img.shields.io/travis/com/thebespokepixel/term-ng/develop?logo=travis)](https://travis-ci.com/thebespokepixel/term-ng "Travis")  
- [![David](https://david-dm.org/thebespokepixel/term-ng/develop/status.svg)](https://david-dm.org/thebespokepixel/term-ng/develop "David") [![David-developer](https://david-dm.org/thebespokepixel/term-ng/develop/dev-status.svg)](https://david-dm.org/thebespokepixel/term-ng/develop?type=dev "David-developer")  
+[![Travis](https://img.shields.io/travis/com/thebespokepixel/term-ng/develop?logo=travis)](https://travis-ci.com/thebespokepixel/term-ng "Travis") [![David](https://david-dm.org/thebespokepixel/term-ng/develop/status.svg)](https://david-dm.org/thebespokepixel/term-ng/develop "David") [![David-developer](https://david-dm.org/thebespokepixel/term-ng/develop/dev-status.svg)](https://david-dm.org/thebespokepixel/term-ng/develop?type=dev "David-developer")  
  [![Snyk](https://snyk.io/test/github/thebespokepixel/term-ng/badge.svg)](https://snyk.io/test/github/thebespokepixel/term-ng "Snyk") [![Code-climate](https://api.codeclimate.com/v1/badges/7ba2088efca500b3b4ff/maintainability)](https://codeclimate.com/github/thebespokepixel/term-ng/maintainability "Code-climate") [![Coverage](https://api.codeclimate.com/v1/badges/7ba2088efca500b3b4ff/test_coverage)](https://codeclimate.com/github/thebespokepixel/term-ng/test_coverage "Coverage")   
 
 ##### Documentation/Help
