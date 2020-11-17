@@ -75,7 +75,7 @@
     "trucolor": "^2.0.2",
     "truwrap": "^2.0.2",
     "update-notifier": "^4.1.0",
-    "yargs": "^15.4.1"
+    "yargs": "^16.0.0"
   },
   "xo": {
     "semicolon": false,
