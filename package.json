@@ -71,7 +71,7 @@
   },
   "dependencies": {
     "@thebespokepixel/meta": "^2.0.4",
-    "read-pkg": "^5.2.0",
+    "read-pkg": "^6.0.0",
     "trucolor": "^2.0.2",
     "truwrap": "^2.0.2",
     "update-notifier": "^4.1.0",
