@@ -1,51 +1,40 @@
-import {exec} from 'child_process'
+import {promisify} from 'node:util'
+import {exec} from 'node:child_process'
 import test from 'ava'
-import pkg from '../package.json'
+import {readPackageSync} from 'read-pkg'
 
+const execPromise = promisify(exec)
+const pkg = readPackageSync()
 const expectedVersion = pkg.version
 
-test.cb(`Module name/version is '${pkg.name} v${expectedVersion}'.`, t => {
-	exec('./bin/termng -vv', (error_, out_) => {
-		t.is(error_, null)
-		t.is(out_, `${pkg.name} v${expectedVersion}`)
-		t.end()
-	})
+test(`Module name/version is '${pkg.name} v${expectedVersion}'.`, async t => {
+	const {stdout, error} = await execPromise('./termng.js -vv')
+	t.is(error, undefined)
+	t.is(stdout, `${pkg.name} v${expectedVersion}`)
 })
 
-test.cb('No Color: has-color', t => {
-	exec('./bin/termng --no-color has-color', error_ => {
-		t.is(error_.code, 1)
-		t.end()
-	})
+test('No Color: has-color', async t => {
+	const error = await t.throwsAsync(execPromise('./termng.js --no-color has-color'))
+	t.is(error.code, 1)
 })
-test.cb('No Color: has-256', t => {
-	exec('./bin/termng --no-color has-256', error_ => {
-		t.is(error_.code, 1)
-		t.end()
-	})
+test('No Color: has-256', async t => {
+	const error = await t.throwsAsync(execPromise('./termng.js --no-color has-256'))
+	t.is(error.code, 1)
 })
-test.cb('No Color: has-16m', t => {
-	exec('./bin/termng --no-color has-16m', error_ => {
-		t.is(error_.code, 1)
-		t.end()
-	})
+test('No Color: has-16m', async t => {
+	const error = await t.throwsAsync(execPromise('./termng.js --no-color has-16m'))
+	t.is(error.code, 1)
 })
 
-test.cb('256 Color: has-color', t => {
-	exec('./bin/termng --color=256 has-color', error_ => {
-		t.is(error_, null)
-		t.end()
-	})
+test('256 Color: has-color', async t => {
+	const {error} = await execPromise('./termng.js --color=256 has-color')
+	t.is(error, undefined)
 })
-test.cb('256 Color: has-256', t => {
-	exec('./bin/termng --color=256 has-256', error_ => {
-		t.is(error_, null)
-		t.end()
-	})
+test('256 Color: has-256', async t => {
+	const {error} = await execPromise('./termng.js --color=256 has-256')
+	t.is(error, undefined)
 })
-test.cb('256 Color: has-16m', t => {
-	exec('./bin/termng --color=256 has-16m', error_ => {
-		t.is(error_.code, 1)
-		t.end()
-	})
+test('256 Color: has-16m', async t => {
+	const error = await t.throwsAsync(execPromise('./termng.js --color=256 has-16m'))
+	t.is(error.code, 1)
 })
