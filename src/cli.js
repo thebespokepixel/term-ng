@@ -1,41 +1,66 @@
 /* ────────╮
  │ Term-NG │ Next Generation Terminal Feature Exposure/Whitelisting
  ╰─────────┴──────────────────────────────────────────────────────────────────── */
-/* eslint unicorn/no-process-exit:0 */
+/* eslint unicorn/no-process-exit:0, node/prefer-global/process: [error] */
 
+import {dirname} from 'node:path'
+import {fileURLToPath} from 'node:url'
 import {simple} from 'trucolor'
 import {truwrap} from 'truwrap'
+import {stripIndent, TemplateTag, replaceSubstitutionTransformer} from 'common-tags'
+import {box} from '@thebespokepixel/string'
 import yargs from 'yargs'
+import {hideBin} from 'yargs/helpers' // eslint-disable-line node/file-extension-in-import
 import meta from '@thebespokepixel/meta'
 import updateNotifier from 'update-notifier'
 import pkg from '../package.json'
-import termNG from '.'
+import termNG from './index.js'
 
 const clr = simple({format: 'sgr'})
-const metadata = meta(__dirname)
+const metadata = meta(dirname(fileURLToPath(import.meta.url)))
 
 const renderer = truwrap({
 	right: 0,
-	outStream: process.stderr
+	outStream: process.stderr,
 })
 
-const _yargs = yargs
-	.strict()
+const colorReplacer = new TemplateTag(
+	replaceSubstitutionTransformer(
+		/([a-zA-Z]+?)[:/|](.+)/,
+		(match, colorName, content) => `${clr[colorName]}${content}${clr[colorName].out}`,
+	),
+)
+
+const title = box(colorReplacer`${'title|term-ng'}${`dim| │ ${metadata.version(3)}`}`, {
+	borderColor: 'yellow',
+	margin: {
+		top: 1,
+	},
+	padding: {
+		bottom: 0,
+		top: 0,
+		left: 2,
+		right: 2,
+	},
+})
+
+const yargsInstance = yargs(hideBin(process.argv))
+	.strictOptions()
 	.help(false)
 	.version(false)
 	.options({
 		h: {
 			alias: 'help',
-			describe: 'Display this help.'
+			describe: 'Display this help.',
 		},
 		v: {
 			alias: 'version',
 			count: true,
-			describe: 'Return the current version on stdout. -vv Return name & version.'
+			describe: 'Return the current version on stdout. -vv Return name & version.',
 		},
 		color: {
-			describe: 'Force color depth --color=256|16m. Disable with --no-color'
-		}
+			describe: 'Force color depth --color=256|16m. Disable with --no-color',
+		},
 	})
 	.command('has-color', 'Is basic color supported?')
 	.command('has-256', 'Is 256 color supported?')
@@ -46,13 +71,10 @@ const _yargs = yargs
 	.command('has-full-font', 'Is audio supported? (set $TERM_FONT=full)')
 	.command('is-enhanced', 'Is the current terminal using an enhanced termcap? (set $TERM_ENHANCED=enabled)')
 	.command('user-agent', 'Print the current terminal software')
-	.wrap(renderer.getWidth())
 
-const {argv} = yargs
+const {argv} = yargsInstance
 
-const usage = `
-${clr.title}term-ng${clr.title.out} ${clr.dim}v${pkg.version}${clr.dim.out}
-
+const usage = stripIndent(colorReplacer)`
 Allow user configured enhanced terminal capabilities to be queried.
 
 The command will exit with status 0 if all the provided queries (except user-agent) are true, otherwise exits with status 1.
@@ -66,18 +88,22 @@ const epilogue = `${clr.title}${metadata.copyright}. ${clr.grey}Released under t
 
 if (!(process.env.USER === 'root' && process.env.SUDO_USER !== process.env.USER)) {
 	updateNotifier({
-		pkg
+		pkg,
 	}).notify()
 }
 
 if (argv.help) {
-	renderer.write(usage)
-	renderer.break(2)
-	renderer.write(_yargs.getUsageInstance().help())
-	renderer.break(2)
-	renderer.write(epilogue)
-	renderer.break(2)
-	process.exit(0)
+	(async () => {
+		const usageContent = await yargsInstance.wrap(renderer.getWidth()).getHelp()
+		renderer.write(title).break(2)
+		renderer.write(usage)
+		renderer.break(2)
+		renderer.write(usageContent)
+		renderer.break(2)
+		renderer.write(epilogue)
+		renderer.break(2)
+		process.exit(0)
+	})()
 }
 
 if (argv.version) {
@@ -98,11 +124,11 @@ const matrix = {
 	'has-audio': termNG.audio,
 	'has-box-font': termNG.font.basic || termNG.font.enhanced,
 	'has-full-font': termNG.font.enhanced,
-	'is-enhanced': termNG.termcap.enhanced
+	'is-enhanced': termNG.termcap.enhanced,
 }
 
-argv._.forEach(query => {
+for (const query of argv._) {
 	if (!matrix[query]) {
 		process.exit(1)
 	}
-})
+}
