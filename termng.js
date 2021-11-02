@@ -11,7 +11,7 @@ import meta from '@thebespokepixel/meta';
 import updateNotifier from 'update-notifier';
 
 const name = "term-ng";
-const version = "3.0.1";
+const version = "3.0.2";
 const description = "Terminal/$TERM feature snooping and whitelisting";
 const main = "index.js";
 const types = "index.d.ts";
@@ -77,7 +77,7 @@ const devDependencies = {
 };
 const dependencies = {
 	"@thebespokepixel/meta": "^3.0.4",
-	"@thebespokepixel/string": "^1.0.3",
+	"@thebespokepixel/string": "^2.0.1",
 	trucolor: "^2.0.4",
 	truwrap: "^2.0.4",
 	"update-notifier": "^5.1.0",
