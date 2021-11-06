@@ -11,7 +11,7 @@ import meta from '@thebespokepixel/meta';
 import updateNotifier from 'update-notifier';
 
 const name = "term-ng";
-const version = "3.0.3";
+const version = "3.0.4";
 const description = "Terminal/$TERM feature snooping and whitelisting";
 const main = "index.js";
 const types = "index.d.ts";
@@ -69,17 +69,17 @@ const devDependencies = {
 	"@types/estree": "^0.0.50",
 	ava: "^4.0.0-rc.1",
 	c8: "^7.10.0",
-	"documentation-theme-bespoke": "^2.0.12",
+	"documentation-theme-bespoke": "^2.0.14",
 	"read-pkg": "^7.0.0",
 	rollup: "^2.59.0",
 	"rollup-plugin-cleanup": "^3.2.1",
-	xo: "^0.46.3"
+	xo: "^0.46.4"
 };
 const dependencies = {
-	"@thebespokepixel/meta": "^3.0.4",
+	"@thebespokepixel/meta": "^3.0.5",
 	"@thebespokepixel/string": "^2.0.1",
-	trucolor: "^2.0.4",
-	truwrap: "^2.0.4",
+	trucolor: "^4.0.4",
+	truwrap: "^4.0.4",
 	"update-notifier": "^5.1.0",
 	yargs: "^17.2.1"
 };
